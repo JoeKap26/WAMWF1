@@ -1,0 +1,23 @@
+
+#wordReadDialog{width:min(96vw,1000px)!important;}
+#wordReadDialog #guidedBlendActions{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:7px!important;flex-wrap:nowrap!important;}
+#wordReadDialog #guidedBlendActions button{min-width:0!important;width:100%!important;white-space:normal!important;padding:8px 4px!important;}
+#wordReadDialog #guidedBlendActions button img{max-width:100%!important;object-fit:contain!important;}
+#wordReadDialog:not(.sentence-step-active) #sentencePictureLayout{display:none!important;}
+#wordReadDialog #wordReadSentence[hidden]{display:none!important;}
+#wordReadDialog.sentence-step-active #sentencePictureLayout{display:flex!important;}
+@media(max-width:540px){#wordReadDialog #guidedBlendActions{gap:3px!important;}#wordReadDialog #guidedBlendActions button{font-size:.7rem!important;}#wordReadDialog #guidedBlendActions button img{height:clamp(45px,14vw,76px)!important;}}
+
+/* Click to Read is the fourth stage inside the word popup. */
+#wordReadDialog.sentence-step-active #wordReadTitle,
+#wordReadDialog.word-step-active #wordReadTitle{display:block!important;box-sizing:border-box;font-size:clamp(23px,4vw,42px)!important;font-weight:900!important;line-height:1.25!important;margin:4px 0 18px!important;padding:clamp(12px,2vw,18px);color:#194a9c;background:linear-gradient(135deg,#fffbe0,#fff2ad);border:2px solid #edc653;border-radius:18px;box-shadow:0 3px 10px #b2871420;}
+#wordReadDialog #sentenceStepListen{display:block;width:76px;min-width:44px;min-height:44px;margin:12px auto;padding:0;border:0;background:transparent;box-shadow:none;cursor:pointer;}
+#wordReadDialog #sentenceStepListen[hidden]{display:none!important;}
+#wordReadDialog #sentenceStepListen img{display:block;width:100%;height:auto;}
+#wordReadDialog #sentenceStepListen:disabled{opacity:.55;cursor:default;}
+#wordReadDialog.sentence-step-active #sentencePictureLayout{align-items:center;gap:18px;}
+#wordReadDialog.sentence-step-active .sentence-build-line{border-radius:10px;color:#34485e;transition:background .15s,color .15s;}
+#wordReadDialog.sentence-step-active .sentence-build-line.is-read{background:#e1f4e8;color:#23653e;}
+#wordReadDialog.sentence-step-active .sentence-build-line.is-reading{background:#fff08a;color:#194a9c;box-shadow:inset 0 0 0 2px #edc94a;}
+#wordReadDialog.sentence-step-active #wordReadParts{display:none!important;}
+@media(max-width:550px){#wordReadDialog.sentence-step-active #sentencePictureLayout{flex-direction:column;}#wordReadDialog.sentence-step-active #sentencePicture{max-height:180px!important;}}

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1446a0">
+  <meta name="description" content="A tap-to-hear word-family reading app made for Ari and Elara.">
+  <title>Elari Word Families</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231446a0'/%3E%3Cpath d='M14 18h36v29H14z' fill='white'/%3E%3Cpath d='M32 18v29M18 25h10M36 25h10M18 32h10M36 32h10' stroke='%23ffcc3d' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout-overrides.css?v=speaker-next-to-settings">
+
+<link rel="stylesheet" href="styles/home-menu-update.css?v=home-progress-bars-v1">
+<link rel="stylesheet" href="styles/unified-word-popup.css?v=inline-reading-2">
+
+  <link rel="stylesheet" href="styles/page-customizations.css">
+<link rel="stylesheet" href="styles/whack-integration.css?v=combined-20261023"></head>
+<body>
+<dialog id="familyFinishDialog" aria-labelledby="familyFinishTitle"><div class="family-finish-card"><img class="family-finish-prize" src="images/rewards/classCompleted.png" alt="Class Completed"><h2 id="familyFinishTitle">Family Completed!</h2><button type="button" id="familyFinishContinue">Continue</button></div></dialog>
+  <dialog id="parentPinDialog" aria-labelledby="parentPinTitle">
+    <form id="parentPinForm">
+      <h2 id="parentPinTitle">Parent Settings</h2>
+      <label for="parentPinInput">Enter the security PIN</label>
+      <input id="parentPinInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="7" autocomplete="off" aria-describedby="parentPinError" autofocus>
+      <p id="parentPinError" role="alert"></p>
+      <div class="parent-pin-actions"><button type="submit">Unlock</button></div>
+    </form>
+  </dialog>
+  <dialog id="parentSettings" aria-label="Parent Settings"><div class="parent-dialog-heading"><h2>Parent Settings</h2></div><div id="parentSettingsContent"></div></dialog>
+  <dialog class="welcome-notice" id="welcomeNotice" aria-label="Welcome" aria-describedby="welcomeNoticeMessage">
+    <p id="welcomeNoticeMessage">I created this entire word-family project for Elara and Ari! Names and progress are saved in your browser, clearing the site’s stored data removes them.</p>
+    <form method="dialog"><button type="submit" autofocus>OK</button></form>
+  </dialog>
+  <header class="site-header app">
+    <div class="brand-home" id="brandHome"><img class="brand-cap-image" src="images/icons/Hat.png" alt="Graduation cap"> <span class="brand-wordmark"><img class="brand-logo" src="images/branding/logoA.png" alt="Elari WonderWorks"><small>Word Families Level 1 · 50 Families</small></span></div>
+    <div class="header-status" id="headerStatus"><span class="learner-title" id="learnerTitle" hidden></span></div><div class="header-controls" hidden><button class="nav" id="switchUser" type="button" hidden>Switch User</button></div>
+  </header>
+  <main class="app start-page" id="startPage">
+    <section class="card start-card" aria-labelledby="startTitle">
+      <img class="welcome-children" src="images/branding/welcome-children.png" width="1374" height="1145" alt="A cheerful boy and girl holding hands" decoding="async">
+      
+      <div id="previousUserPanel">
+        <form id="userForm">
+          <label class="name-label" for="previousUser">Choose a User</label>
+          <select id="previousUser" required></select>
+          <button class="start-button" id="continuePractice" type="button" style="background:#ffdf50 !important;border:3px solid #e99b0b !important;border-radius:20px !important;box-shadow:0 6px 0 rgba(20,40,80,.14) !important;padding:8px 16px !important;box-sizing:border-box !important;"><img class="login-button-art" src="images/login/continuePlaying.png" alt="Continue Playing"><small id="continueDetail" hidden></small></button>
+          
+        </form>
+        <button class="change-name new-user-button" id="createNewUser" type="button" style="background:#e8f2ff !important;border:3px solid #80acf4 !important;border-radius:20px !important;box-shadow:0 6px 0 rgba(20,40,80,.14) !important;padding:8px 16px !important;box-sizing:border-box !important;"><img class="login-button-art" src="images/login/newUser.png" alt="New User"></button>
+        <button class="change-name new-user-button delete-user-button" id="deleteUser" type="button" style="background:#fff0f2 !important;border:3px solid #f37f95 !important;border-radius:20px !important;box-shadow:0 6px 0 rgba(20,40,80,.14) !important;padding:8px 16px !important;box-sizing:border-box !important;"><img class="login-button-art" src="images/login/deleteUser.png" alt="Delete User"></button>
+      </div>
+      <form id="nameForm" hidden>
+        <label class="name-label" for="learnerName">New user's name</label>
+        <input class="name-input" id="learnerName" name="learnerName" type="text" maxlength="32" autocomplete="given-name" autocapitalize="words" enterkeyhint="go" required aria-describedby="nameError">
+        <p class="name-error" id="nameError" role="status" hidden></p>
+        <button class="start-button" type="submit" style="background:#ffdf50 !important;border:3px solid #e99b0b !important;border-radius:20px !important;box-shadow:0 6px 0 rgba(20,40,80,.14) !important;padding:8px 16px !important;box-sizing:border-box !important;"><img class="login-button-art" src="images/login/createAndStart.png" alt="Create and Start"></button>
+        <button class="change-name new-user-button" id="cancelNewUser" type="button" style="background:#e8f2ff !important;border:3px solid #80acf4 !important;border-radius:20px !important;box-shadow:0 6px 0 rgba(20,40,80,.14) !important;padding:8px 16px !important;box-sizing:border-box !important;"><img class="login-button-art" src="images/login/backToUsers.png" alt="Back to Users"></button>
+      </form>
+    </section>
+  <footer class="login-brand-footer"><img class="footer-fox" src="images/branding/fox.png" alt="Elari fox"><p>Elara and Ari • Love, Dad</p></footer>
+  </main>
+  <main class="app" id="practicePage" hidden>
+    <button class="nav" id="practiceUsers" type="button"><img class="header-nav-icon" src="images/icons/users.png" alt=""> Users</button>
+    <button class="challenge" id="homeContinue" type="button">▶️ Continue Playing</button>
+    <button class="nav" id="homeFinal" type="button">🏆 Play Challenge</button>
+    <button class="nav" id="parentSettingsButton" type="button"><img class="header-nav-icon" src="images/icons/parentSettings.png" alt=""> Parent Settings</button>
+    <div class="page-heading"><div><p class="eyebrow" id="layoutContext">Word Families Level 1</p><h1 id="layoutTitle" tabindex="-1">Home</h1><div id="familyLearningPath" class="learning-path" aria-label="Current word family progress" hidden>
+  <div class="learning-step" data-step="0"><span class="learning-node" aria-hidden="true">▶</span><span class="learning-label">Words</span></div>
+  <span class="learning-chevron" aria-hidden="true">›</span>
+  <div class="learning-step" data-step="1"><span class="learning-node" aria-hidden="true">☆</span><span class="learning-label">Sentences</span></div>
+  <span class="learning-chevron" aria-hidden="true">›</span>
+  <div class="learning-step" data-step="2"><span class="learning-node" aria-hidden="true">☆</span><span class="learning-label">Challenge</span></div>
+</div></div>
+      <div class="stars" aria-label="Families 1 of 50"><span class="level-label">Families</span><span id="levelCount">1/50</span></div></div>
+    <nav class="shared-navigation" aria-label="Page navigation"><button class="nav" id="layoutBack" type="button">← Back</button><button class="nav" id="layoutFamilies" type="button"><img class="header-nav-icon" src="images/icons/families.png" alt=""> Home</button><p id="layoutProgress" role="status"></p></nav>
+    <nav id="activityTabs" hidden aria-hidden="true"><button id="layoutWords" type="button">Words</button><button id="layoutSentences" type="button">Sentences</button><button id="layoutQuiz" type="button">Challenge</button></nav>
+    <nav class="activity-tabs" id="hubTabs" aria-label="All words activities" hidden><button class="nav" id="layoutBrowse" type="button">Explore All Words</button><button class="nav" id="layoutAllQuiz" type="button">Final Word Challenge</button></nav>
+    <div hidden><button id="changeName" type="button">Switch User</button></div>
+
+    <section class="card" id="homePage" aria-labelledby="familySelectionTitle">
+      <section class="kid-home" aria-label="Home">
+ <div class="kid-home-title"><img class="brand-logo" src="images/branding/logoA.png" alt="Elari WonderWorks"><span>Word Families · Level 1</span></div>
+ <div class="kid-home-cards kid-home-cards-updated">
+  <button id="kidContinue" class="kid-card kid-continue kid-image-card" type="button" aria-label="Continue Learning"><img src="images/buttons/continueLearning.png" alt="Continue Learning"><span id="learningProgressBar" class="home-action-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="home-action-progress-fill"></span></span></button>
+  <button id="kidChallenge" class="kid-card kid-challenge kid-image-card" type="button" aria-label="Player Challenge"><img src="images/buttons/playerChallenge.png" alt="Player Challenge"><span id="challengeProgressBar" class="home-action-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="home-action-progress-fill"></span></span></button>
+  <button id="kidWhack" class="kid-card kid-image-card" type="button" aria-label="Whack-a-Mole"><img src="images/buttons/whackamole.png" alt="Whack-a-Mole"></button>
+<button id="kidLearn" class="kid-learn kid-image-card" type="button" aria-label="Family List"><img src="images/buttons/familyList.png" alt="Family List"></button>
+  <button id="kidCompleted" class="kid-card kid-image-card" type="button" aria-label="Completed Families"><img src="images/buttons/completedFamilies.png" alt="Completed Families"></button>
+ </div>
+ <div class="kid-home-bottom"><button id="kidChangeUser" type="button">👤 Change Player</button><button id="kidSettings" type="button"><img class="header-nav-icon" src="images/icons/parentSettings.png" alt=""> Parent Settings</button></div>
+ </section>
+ <div class="kid-family-list" id="kidFamilyList" hidden>
+ <div class="completed-page-toolbar"><button type="button" id="completedBack">← Back to Menu</button><button type="button" id="completedInfo">ℹ️ Info</button></div>
+<h2 class="family-selection-heading" id="familySelectionTitle" tabindex="-1">Completed Families</h2>
+      <div id="allWordsQuizTotals" role="status" aria-label="All words quiz selections" style="text-align:center; margin:12px 0; font-size:0.9rem; font-weight:700">
+        All Words Quiz · Correct: <span id="allQuizCorrect">0</span> · Wrong: <span id="allQuizWrong">0</span>
+      </div>
+      <p class="prompt" id="practiceSummary">Choose a family or continue your practice.</p>
+      <div class="actions"><button class="challenge" id="openAllWords" type="button">📚 Explore Words</button></div>
+      <div class="family-picker-grid" id="familyPickerGrid"></div>
+    </div></section>
+    <section id="wordsPage" hidden aria-label="Word practice">
+      <nav class="toolbar" aria-label="Word practice navigation">
+        <button class="nav" id="familyBack" type="button">Back to families</button>
+        <button class="nav" id="previous" type="button">Previous family</button>
+        <button class="nav" id="next" type="button">Next family</button>
+      </nav>
+
+    <section class="card" aria-live="polite">
+      <div class="family-head">
+        <div class="page-count" id="pageCount"></div>
+        <h2 id="familyTitle"></h2>
+        <div class="kid-instruction"><button type="button" class="kid-speak" data-instruction="word" aria-label="Hear word practice instructions">🔊</button><p class="prompt">Listen. Then find the word.</p></div>
+        <button class="family-chip sound" id="familySound">🔊 Hear the family sound</button>
+      </div>
+      <div class="word-grid" id="wordGrid"></div>
+      <div class="actions">
+        <button class="challenge" id="challenge">🎯 Listen &amp; Find the Word</button>
+        <button class="challenge" id="readSentences" type="button" hidden>📖 Read Sentences</button>
+      </div>
+      <p class="game-message" id="gameMessage" role="status"></p>
+      <p id="storageNotice" class="name-error" role="status" hidden>Progress cannot be saved in this browser right now. Keep this page open to continue.</p>
+    </section>
+    </section>
+    <section id="sentencesPage" hidden aria-labelledby="sentencesTitle">
+      <nav class="toolbar" aria-label="Sentence practice navigation">
+        <button class="nav" id="sentencesBack" type="button">Back to Words</button>
+        <button class="nav" id="sentencesFamilies" type="button">Back to Families</button>
+      </nav>
+      <section class="card">
+        <div class="family-head">
+          <div class="page-count" id="sentencesCount"></div>
+          <h2 id="sentencesTitle" tabindex="-1"></h2>
+          <div class="kid-instruction"><button type="button" class="kid-speak" data-instruction="sentence" aria-label="Hear sentence practice instructions">🔊</button><p class="prompt">Listen. Then find the sentence.</p></div>
+        </div><div class="sentence-grid" id="sentenceGrid"></div>
+        <div class="actions"><button class="challenge" id="sentenceChallenge" type="button">🎯 Listen &amp; Find the Sentence</button></div>
+        <div class="actions"><button class="challenge" id="openFamilyGroupQuiz" type="button" hidden>🎯 Family Group Quiz</button></div>
+        <p class="game-message" id="sentenceMessage" role="status"></p>
+      </section>
+
+    </section>
+
+    <section id="familyGroupQuizPage" hidden aria-labelledby="familyWordTitle">
+      <nav class="toolbar" aria-label="Family quiz navigation">
+        <button class="nav" id="familyQuizBack" type="button">Back to Sentences</button>
+        <button class="nav" id="familyQuizFamilies" type="button">Back to Families</button>
+      </nav>
+      <section class="card" id="familyWordQuiz" aria-labelledby="familyWordTitle" style="margin-top:24px">
+        <h2 id="familyWordTitle" tabindex="-1">Find the Family Word</h2>
+        <p class="prompt">Listen and choose. Three questions, with three choices each.</p>
+        <p id="familyWordCounter"></p>
+        <button class="challenge" id="familyWordHear" type="button">🔊 Hear the Word</button>
+        <div class="quiz-choices" id="familyWordChoices"></div>
+        <p class="game-message" id="familyWordFeedback" role="status"></p>
+        <div class="actions">
+          <button class="challenge" id="familyWordNext" type="button" hidden>Next Word</button>
+        </div>
+      </section>
+    </section>
+    <section id="allWordsPage" hidden aria-labelledby="allWordsTitle">
+      <nav class="toolbar"><button class="nav" id="allWordsBack" type="button">Back to Families</button></nav>
+      <section class="card">
+        <p id="triviaQuestionCount" role="status" aria-live="off"></p>
+        <h2 id="allWordsTitle" tabindex="-1">All Words &amp; Final Challenge</h2>
+        <div class="actions"><button class="nav" id="browseTab" type="button">Family List</button><button class="challenge" id="quizTab" type="button">Final Challenge</button></div>
+        <section id="browsePanel" hidden>
+          <div id="browseRuleButtons" class="browse-rule-buttons" aria-label="Learn the reading rules">
+            <button type="button" id="browseAlphabetRule" class="browse-rule-button" aria-label="The Alphabet"><img src="images/buttons/theAlphabet.png" alt="The Alphabet"></button>
+            <button type="button" id="browseSilentERule" class="browse-rule-button" aria-label="Learn the Rule Silent E"><img src="images/buttons/silentE.png" alt="Learn the Rule Silent E"></button>
+          </div>
+          <p class="prompt">Tap the Family to Explore its Words</p>
+          <p id="browseCount" role="status"></p><label class="browse-filter-label" for="browseFamilyFilter">Choose a family</label><select id="browseFamilyFilter"></select>
+          <div id="browseResults"></div>
+        </section>
+        <section id="quizPanel">
+          <div id="finalChallengeRecord" class="final-challenge-record" aria-live="polite">
+            <h3 id="finalRecordTitle">Final Challenge Results</h3><p id="finalRoundRecord"></p><p id="finalSavedRecord"></p><div id="finalHistoryRecord"></div>
+          </div>
+          <div id="quizSetup" role="group" aria-label="Choose your challenge">
+            <div class="challenge-mode-choices">
+              <button type="button" id="chooseWordChallenge" class="challenge-mode-card" aria-label="Word Challenge"><img src="images/buttons/wordChallenge.png" alt="Word Challenge"></button>
+              <button type="button" id="chooseSentenceChallenge" class="challenge-mode-card" aria-label="Sentence Challenge"><img src="images/buttons/sentenceChallenge.png" alt="Sentence Challenge"></button>
+            </div>
+            <p id="quizHistory" hidden></p><button class="challenge" id="startQuiz" type="button" hidden>Start Challenge</button>
+            <p id="quizSetupMessage" role="status"></p>
+          </div>
+          <button type="button" id="changeChallengeMode" class="nav" hidden><span class="challenge-switch-label">Sentence Challenge</span></button>
+          <div id="quizRound" hidden>
+            <p class="prompt" id="finalChallengeInstruction">Listen, then choose the word you hear.</p>
+            <h3 id="quizCounter"></h3>
+            <button class="challenge" id="quizHear" type="button">🔊 Hear the Word</button>
+            <div class="quiz-choices" id="quizChoices"></div>
+            <p id="quizFeedback" role="status"></p>
+            <button class="challenge" id="quizNext" type="button" hidden>Next Word</button>
+          </div>
+          <div id="quizCheckpoint" hidden aria-hidden="true"></div>
+          <div id="quizResults" hidden><div id="quizSummary" role="status"></div><button class="challenge" id="quizAgain" type="button">Play Again</button></div>
+        </section>
+      </section>
+    </section>
+    <nav class="activity-footer" id="activityFooter" aria-label="Continue practice" hidden><button class="nav" id="layoutPreviousFamily" type="button">← Previous Family</button><button class="nav" id="layoutContinue" type="button">Next Family →</button><button class="challenge" id="layoutFooterSentences" type="button">Sentences</button></nav>
+    <footer><img class="footer-fox" src="images/branding/fox.png" alt="Elari fox"><p id="learnerFooter">Elara and Ari • Love, Dad</p><button class="change-name" id="resetProgress" type="button">Reset Progress</button></footer>
+  </main>
+  <div class="burst" id="burst" aria-hidden="true">🌟</div>
+<dialog id="wordReadDialog" aria-labelledby="wordReadTitle"><h2 id="wordReadTitle"></h2><div id="wordReadParts" class="sound-parts"></div><div id="sentencePictureLayout"><div id="wordReadSentence" class="read-sentence"></div><img id="sentencePicture" class="learning-picture" alt="" hidden></div><p id="wordReadStatus" class="read-status" role="status"></p><div class="read-actions" id="guidedBlendActions"><button type="button" id="readHearSounds"><img src="images/buttons/hear.png" alt="" aria-hidden="true"><span>Hear Sounds</span></button><button type="button" id="readBlendSounds"><img src="images/buttons/blend.png" alt="" aria-hidden="true"><span>Blend</span></button><button type="button" id="readWholeWord"><img src="images/buttons/read.png" alt="" aria-hidden="true"><span>Read Word</span></button><button type="button" id="readSentenceStep"><img src="images/buttons/clickToRead.png" alt="" aria-hidden="true"><span>Click to Read</span></button><button type="button" id="readBuildWord"><img src="images/buttons/buildWord.png" alt="" aria-hidden="true"><span>Build the Word</span></button></div><div id="buildWordExercise" hidden><div id="buildPictureLayout"><img id="wordPicture" class="learning-picture" alt="" hidden><div id="buildLetterArea"><div id="buildSlots" aria-label="Letters placed"></div><div id="buildLetters" aria-label="Available letters"></div><span id="buildFeedback" role="status" class="sr-only"></span><div class="build-bottom-actions"><button type="button" id="buildReset" aria-label="Reset letters" title="Reset letters"><img src="images/buttons/reset.png" alt="Reset"></button><button type="button" id="buildSpeak" aria-label="Hear the word again" title="Hear the word again"><img src="images/buttons/listen.png" alt="Play word"></button><button type="button" id="buildHelp" aria-label="Ask a parent for help with this word" title="Ask for help"><img src="images/buttons/help.png" alt="Help!"></button></div></div></div></div><button type="button" id="sentenceStepListen" aria-label="Listen to this sentence line" hidden><img src="images/buttons/listen.png" alt="Listen"></button><div class="read-actions read-navigation"><button type="button" id="readPrevious">← Previous Word</button><button type="button" id="readNext">Next Word →</button></div></dialog>
+  <dialog id="whackGameDialog" aria-label="Whack-a-Mole game"><iframe id="whackGameFrame" title="Whack-a-Mole" allow="autoplay"></iframe></dialog>
+  <script src="data.js"></script>
+  <script src="legacy-family-order.js"></script>
+  <script src="sentences.js?v=recording-matched"></script>
+  <script src="scripts/sentence-challenge.js"></script>
+  <script src="scripts/app.js?v=completed-family-songs"></script>
+  <!-- Layout helpers run directly after the core app, in the original order. -->
+  <script src="scripts/header-shortcuts.js"></script>
+  <script src="scripts/page-instructions-family-navigation.js?v=family-heading-fix"></script>
+
+<link rel="stylesheet" href="styles/reading-popup.css">
+
+<dialog id="silentEDialog" aria-label="Silent E lesson">
+  <div class="silent-e-head"><h2>Silent E</h2></div>
+  <div class="silent-e-pairs">
+    <button type="button" class="silent-e-pair" id="silentEWithoutButton" aria-label="Hear slid"><span class="silent-e-label silent-e-short">Short i</span><span class="silent-e-word" id="silentEWithout">sl<span class="silent-e-green">i</span>d</span></button>
+    <button type="button" class="silent-e-pair" id="silentEWithButton" aria-label="Hear slide"><span class="silent-e-label silent-e-long">Long i</span><span class="silent-e-word" id="silentEWith">sl<span class="silent-e-red">i</span>d<span class="silent-e-red">e</span></span></button>
+    <button type="button" class="silent-e-pair" id="silentEHatButton" aria-label="Hear hat"><span class="silent-e-label silent-e-short">Short a</span><span class="silent-e-word">h<span class="silent-e-green">a</span>t</span></button>
+    <button type="button" class="silent-e-pair" id="silentEHateButton" aria-label="Hear hate"><span class="silent-e-label silent-e-long">Long a</span><span class="silent-e-word">h<span class="silent-e-red">a</span>t<span class="silent-e-red">e</span></span></button>
+  </div>
+  <div class="silent-e-audio-actions" aria-label="Silent E audio controls">
+    <button type="button" class="silent-e-listen" id="silentEListenButton" aria-label="Listen to the Silent E rule"><img src="images/buttons/listen.png" alt="Listen"></button>
+    <button type="button" class="silent-e-song" id="silentESongButton" aria-label="Play the Silent E song"><img src="images/buttons/song.png" alt="Song"></button>
+  </div>
+</dialog>
+<link rel="stylesheet" href="styles/runtime-03-browse-rule-styles.css">
+<script src="scripts/browse-rules.js"></script>
+<script src="scripts/silent-e-lesson.js"></script>
+<link rel="stylesheet" href="styles/runtime-04-phonics-rules-compact-row.css">
+<dialog id="completedFamiliesHelpDialog" aria-label="How to Use Completed Families" style="width:min(90vw,520px);padding:26px;border:4px solid #bbd1f4;border-radius:24px;background:#fff8e8;color:#203a60;box-shadow:0 20px 60px #203a6044;">
+  <h2 style="margin-top:0">How to Use · Completed Families</h2>
+  <p>Explore all 50 word families! Completed families have a green Class Completed badge. Tap any family to practice it again.</p>
+  <button type="button" id="completedHelpClose" style="padding:12px 22px;border:0;border-radius:12px;background:#2169d1;color:white;font-weight:800">Close</button>
+</dialog>
+<script src="scripts/phonics-init.js"></script>
+
+<!-- Reliable Completed Families navigation (independent of optional activity initialization) -->
+<script src="scripts/completed-navigation.js?v=family-songs"></script>
+
+<!-- Responsive listening-button alignment: preserve existing PNGs and click actions. -->
+<link rel="stylesheet" href="styles/listening-buttons.css">
+
+<!-- Compact spacing for three family practice listening buttons. -->
+
+<link rel="stylesheet" href="styles/alphabet-lesson.css?v=song-button">
+<script src="scripts/alphabet-lesson.js?v=song-button"></script>
+</body>
+</html>

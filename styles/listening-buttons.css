@@ -1,0 +1,91 @@
+/* Phase 2: ordered combination of runtime-05-responsive-listening-button-alignment.css and runtime-06-compact-family-listening-spacing.css. */
+
+/* Keep the word/sentence control directly aligned with the answer grid,
+   rather than inside the old 640px-wide actions wrapper. */
+#wordsPage .word-grid + .actions,
+#sentencesPage .sentence-grid + .actions,
+#wordsPage .actions:has(> #challenge),
+#sentencesPage .actions:has(> #sentenceChallenge) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin: 12px 0 8px !important;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+/* Same fluid, centered button sizing on all practice and quiz screens. */
+#challenge.practice-image-button,
+#sentenceChallenge.practice-image-button,
+#familyWordHear.practice-image-button,
+#quizHear.practice-image-button {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  display: block !important;
+  flex: 0 1 auto;
+  width: min(75%, 480px) !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 12px auto 8px !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#challenge.practice-image-button img,
+#sentenceChallenge.practice-image-button img,
+#familyWordHear.practice-image-button img,
+#quizHear.practice-image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+
+
+/* Remove compounded spacing from the action row and the PNG button. */
+#practicePage #wordsPage .actions:has(> #challenge),
+#practicePage #sentencesPage .actions:has(> #sentenceChallenge) {
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  min-height: 0 !important;
+}
+#practicePage #challenge.practice-image-button,
+#practicePage #sentenceChallenge.practice-image-button {
+  margin: 0 auto !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+/* Family Challenge: prevent a second large gap around Hear the Word. */
+#practicePage #familyGroupQuizPage #familyWordQuiz {
+  padding-bottom: clamp(8px, 1.4vw, 16px) !important;
+}
+#practicePage #familyGroupQuizPage #familyWordHear.practice-image-button {
+  margin: 0 auto !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+#practicePage #familyGroupQuizPage #familyWordChoices {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+/* Do not reserve height for blank feedback or hidden next-step controls. */
+#practicePage #familyGroupQuizPage #familyWordFeedback:empty,
+#practicePage #familyGroupQuizPage .actions:has(> #familyWordNext[hidden]) {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+}
+

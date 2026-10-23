@@ -1,0 +1,38 @@
+#whackGameDialog{position:fixed!important;inset:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;width:100vw!important;max-width:none!important;height:100dvh!important;max-height:none!important;overflow:hidden!important;background:#173b25!important;}
+#whackGameFrame{display:block;width:100%;height:100%;border:0;}
+
+/* Home: compact challenge followed by three equal-width menu options. */
+#homePage .kid-home-cards-updated {
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ --home-challenge-height:calc(clamp(76.5px,14.1661cqw,238px) + clamp(8.5px,1.02vw,17px) * 2 + clamp(8.5px,.85vw,15.3px) + clamp(15.3px,2.21cqw,30.6px) + 3.4px);
+}
+#homePage .kid-home-cards-updated > #kidChallenge {
+ height:var(--home-challenge-height)!important;box-sizing:border-box!important;
+ padding:clamp(8.5px,1.02vw,17px)!important;
+ gap:clamp(8.5px,.85vw,15.3px)!important;
+ border-width:1.7px!important;
+}
+#homePage .kid-home-cards-updated > #kidChallenge img {
+ height:clamp(76.5px,14.1661cqw,238px)!important;
+}
+#homePage #kidChallenge .home-action-progress {
+ height:clamp(15.3px,2.21cqw,30.6px);
+}
+#homePage .kid-home-cards-updated > :is(#kidWhack,#kidLearn,#kidCompleted) {
+ grid-row:3!important;width:100%!important;min-width:0!important;
+ height:var(--home-challenge-height)!important;min-height:0!important;
+ aspect-ratio:auto!important;box-sizing:border-box!important;
+ padding:clamp(4px,.6vw,10px)!important;margin:0!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+}
+#homePage .kid-home-cards-updated > #kidWhack {
+ grid-column:1!important;border:2px solid #c4c6ca!important;
+ border-radius:20px!important;background:#eeeeef!important;
+}
+#homePage .kid-home-cards-updated > #kidLearn {grid-column:2!important;}
+#homePage .kid-home-cards-updated > #kidCompleted {grid-column:3!important;}
+#homePage .kid-home-cards-updated > :is(#kidWhack,#kidLearn,#kidCompleted) img {
+ display:block!important;width:100%!important;height:100%!important;
+ min-width:0!important;min-height:0!important;max-width:100%!important;
+ max-height:100%!important;object-fit:contain!important;
+}

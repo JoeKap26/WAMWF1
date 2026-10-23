@@ -1,0 +1,9 @@
+
+#browseRuleButtons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:center;justify-items:center;width:100%;max-width:none;margin:8px 0 24px;padding:0;box-sizing:border-box}
+#browseRuleButtons .browse-rule-button{display:block;width:100%;max-width:280px;background:none;border:0;box-shadow:none;padding:0;margin:0;cursor:pointer;line-height:0;border-radius:18px}
+#browseRuleButtons .browse-rule-button img{display:block;width:100%;height:auto;object-fit:contain}
+#browseRuleButtons .browse-rule-button:hover{filter:brightness(1.05)}
+#browseRuleButtons .browse-rule-button:focus-visible{outline:4px solid #f5c33b;outline-offset:4px}
+@media(max-width:620px){#browseRuleButtons{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0 18px;padding:0}}
+
+

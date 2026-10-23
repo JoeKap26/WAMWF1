@@ -1,0 +1,1 @@
+Add your recorded silente.mp3 to this folder. The app will automatically play audio/rules/silente.mp3 when the lesson opens. Also add audio/words/hope.mp3 if not already present.

@@ -1,0 +1,1494 @@
+/* kidVisualUpgrade */
+
+.kid-home{margin:8px auto 24px;padding:22px;border:2px solid #d8e4f7;border-radius:28px;background:#f9fbff;color:#233554}
+.kid-home-title{text-align:center;display:flex;flex-direction:column;gap:5px;margin-bottom:18px}
+.kid-home-title strong{font-size:clamp(1.55rem,3vw,2.25rem);color:#164ba3}
+.kid-home-title span{color:#55647a;font-weight:700}
+.kid-home-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kid-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:3px solid #bfd3ee;border-radius:22px;min-height:205px;padding:16px;color:#183b72;cursor:pointer}
+.kid-card strong{font-size:clamp(1.25rem,2.5vw,1.8rem)}.kid-card small,.kid-continue small{font-size:1rem;color:#4d5b70}
+.kid-picture{font-size:clamp(4rem,8vw,6rem);line-height:1.25}
+.kid-learn{background:#e4f6eb;border-color:#9cd8b3}.kid-challenge{background:#e8efff;border-color:#a9c3f3}
+.kid-continue{width:100%;min-height:92px;display:flex;align-items:center;justify-content:space-around;gap:12px;margin-top:15px;padding:12px 20px;background:#fff0cb;border:3px solid #f5d58b;border-radius:22px;color:#233554;cursor:pointer}
+.kid-continue>span:nth-child(2){display:flex;flex-direction:column;align-items:flex-start}.kid-continue strong{font-size:clamp(1.25rem,2.5vw,1.65rem)}
+.kid-home-bottom{display:flex;justify-content:space-between;gap:12px;margin-top:12px}.kid-home-bottom button{border:0;background:transparent;color:#405474;padding:12px;font-weight:700}
+.kid-family-list{padding-top:12px;border-top:2px solid #e3eaf4}
+.kid-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0;padding:10px;background:#f0f6ff;border-radius:18px;text-align:center;font-weight:800;color:#264e86}
+.kid-steps span{padding:10px 3px;background:white;border-radius:12px}
+.kid-instruction{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0}
+.kid-instruction .prompt{margin:0}.kid-speak{font-size:1.6rem;min-width:60px;min-height:60px;border:2px solid #b8d3fa;background:#e9f2ff;border-radius:18px;cursor:pointer}
+.kid-card:focus-visible,.kid-continue:focus-visible,.kid-speak:focus-visible{outline:4px solid #f6b923;outline-offset:3px}
+@media(max-width:600px){.kid-home{padding:12px}.kid-home-cards{gap:9px}.kid-card{min-height:160px;padding:8px}.kid-picture{font-size:3.8rem}.kid-steps{font-size:.8rem;gap:3px}.kid-steps span{padding:8px 2px}.kid-home-bottom button{font-size:.85rem}}
+
+
+/* ordered-header-controls */
+
+/* Three matching navigation controls in one right-hand column. */
+.site-header .header-navigation {
+  display:flex!important; flex-direction:column!important;
+  align-items:stretch!important; justify-content:center!important;
+  gap:9px!important; width:100%; min-width:0;
+}
+.site-header .header-navigation > #parentSettingsButton,
+.site-header .header-navigation > #practiceUsers,
+.site-header .header-navigation > #layoutFamilies {
+  box-sizing:border-box!important; display:flex!important;
+  justify-content:center!important; align-items:center!important;
+  width:100%!important; min-height:62px!important;
+  padding:10px 14px!important; margin:0!important;
+  font-size:clamp(1rem,1.75vw,1.35rem)!important;
+  font-weight:800!important; line-height:1.2!important;
+  border:2px solid #cbdaf4!important; border-radius:17px!important;
+  background:#fff!important; color:#194a9c!important;
+  box-shadow:0 5px 0 #c5cbd6!important;
+  white-space:nowrap!important; position:static!important;
+  flex:0 0 auto!important; order:initial!important;
+}
+.site-header .header-navigation > #parentSettingsButton[hidden],
+.site-header .header-navigation > #practiceUsers[hidden],
+.site-header .header-navigation > #layoutFamilies[hidden] {display:none!important}
+.site-header {grid-template-columns:minmax(0,1fr) auto minmax(210px,300px)!important;align-items:center!important}
+@media(max-width:620px){
+ .site-header {grid-template-columns:minmax(0,1fr) minmax(145px,42%)!important}
+ .site-header .header-navigation {grid-column:2!important;grid-row:1/3!important}
+ .site-header .header-navigation > #parentSettingsButton,
+ .site-header .header-navigation > #practiceUsers,
+ .site-header .header-navigation > #layoutFamilies {font-size:.88rem!important;min-height:51px!important;padding:8px 5px!important}
+}
+
+
+/* headerUnified2026 */
+
+/* Consistent three-column top bar: brand / score and player / navigation */
+.site-header.app{display:grid!important;grid-template-columns:minmax(210px,1fr) minmax(190px,auto) minmax(220px,310px)!important;gap:18px!important;align-items:center!important;padding:16px 20px!important;min-height:0!important}
+.site-header .brand-home{grid-column:1!important;grid-row:1!important;min-width:0!important}
+.site-header .header-status{grid-column:2!important;grid-row:1!important;display:flex!important;flex-direction:row!important;justify-content:center!important;align-items:center!important;gap:14px!important;min-width:0!important}
+.site-header .header-status .stars{position:static!important;margin:0!important;display:flex!important;align-items:center!important;flex:none!important;white-space:nowrap!important}
+.site-header .header-status .learner-title{position:static!important;margin:0!important;min-width:0!important;max-width:190px!important;overflow-wrap:anywhere!important;font-size:clamp(1.65rem,3vw,2.325rem)!important;font-weight:800!important;color:#194a9c!important}
+
+.site-header .header-navigation{grid-column:3!important;grid-row:1!important;display:flex!important;flex-direction:column!important;gap:9px!important;width:100%!important;min-width:0!important}
+.site-header .header-navigation > #parentSettingsButton,.site-header .header-navigation > #practiceUsers,.site-header .header-navigation > #layoutFamilies{width:100%!important;min-height:57px!important;font-size:clamp(1rem,1.6vw,1.3rem)!important;line-height:1.15!important;white-space:normal!important;text-align:center!important}
+.site-header .header-navigation > button.header-inactive,.site-header .header-navigation > button:disabled{background:#bdc9db!important;border-color:#a6b5ce!important;color:#3f5272!important;box-shadow:0 3px 0 #8999b2!important;cursor:default!important;opacity:1!important;filter:none!important}
+.site-header .header-controls{display:none!important}
+/* The existing heading must no longer reserve space for the moved star badge. */
+#practicePage .page-heading .stars{display:none!important}
+@media(max-width:850px){.site-header.app{grid-template-columns:minmax(0,1fr) minmax(165px,42%)!important;gap:10px!important;padding:12px!important}.site-header .brand-home{grid-column:1!important;grid-row:1!important}.site-header .header-status{grid-column:1!important;grid-row:2!important;justify-content:flex-start!important;gap:9px!important}.site-header .header-navigation{grid-column:2!important;grid-row:1/3!important}.site-header .header-navigation > #parentSettingsButton,.site-header .header-navigation > #practiceUsers,.site-header .header-navigation > #layoutFamilies{min-height:50px!important;padding:7px 5px!important;font-size:clamp(.82rem,2.3vw,1.05rem)!important}.site-header .header-status .learner-title{font-size:1.5rem!important}}
+@media(max-width:460px){.site-header.app{grid-template-columns:minmax(0,1fr) minmax(135px,43%)!important}.site-header .header-status{flex-wrap:wrap!important}.site-header .header-status .stars{padding:5px 8px!important}.site-header .brand-home{font-size:.9rem!important}}
+
+
+/* headerFinalAlignmentFix */
+
+.site-header.app{display:grid!important;grid-template-columns:minmax(250px,1fr) minmax(175px,auto) minmax(250px,310px)!important;align-items:center!important;column-gap:24px!important;row-gap:10px!important;min-height:0!important;padding:16px 20px!important}
+.site-header .brand-home{grid-column:1!important;grid-row:1!important;align-self:center!important;min-width:0!important}
+.site-header .header-status{grid-column:2!important;grid-row:1!important;display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:center!important;gap:14px!important;min-width:0!important;white-space:nowrap!important}
+.site-header .header-status .stars{display:inline-flex!important;position:static!important;align-items:center!important;flex-shrink:0!important;margin:0!important}
+.site-header .header-status .learner-title:not([hidden]){display:inline-block!important;position:static!important;margin:0!important;max-width:180px!important;font-size:clamp(1.65rem,3vw,2.325rem)!important;font-weight:800!important;color:#194a9c!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.site-header .header-status .learner-title[hidden],.site-header .header-status .stars[hidden]{display:none!important}
+.site-header .header-navigation{grid-column:3!important;grid-row:1!important;display:flex!important;flex-direction:column!important;gap:9px!important;align-items:stretch!important;justify-content:center!important;width:100%!important;min-width:0!important;visibility:visible!important}
+.site-header .header-navigation > button{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:57px!important;box-sizing:border-box!important;white-space:nowrap!important;text-align:center!important;margin:0!important}
+.site-header .header-navigation > button:disabled{background:#bdc9db!important;color:#3f5272!important;border-color:#a6b5ce!important;opacity:1!important;cursor:default!important}
+
+@media(max-width:850px){.site-header.app{grid-template-columns:minmax(0,1fr) minmax(165px,43%)!important;column-gap:10px!important}.site-header .brand-home{grid-column:1!important;grid-row:1!important}.site-header .header-status{grid-column:1!important;grid-row:2!important;justify-content:flex-start!important;gap:8px!important}.site-header .header-navigation{grid-column:2!important;grid-row:1/3!important}.site-header .header-navigation > button{min-height:49px!important;font-size:clamp(.82rem,2.4vw,1.08rem)!important;padding:6px!important}}
+@media(max-width:460px){.site-header .header-status .learner-title:not([hidden]){max-width:90px!important;font-size:1.5rem!important}.site-header .header-status .stars{padding:5px 8px!important}.site-header .header-navigation > button{white-space:normal!important}}
+
+
+/* brandScoreLeftAlignedFix */
+
+/* Brand at upper left; score and player directly below, in the same left column. */
+.site-header.app{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(230px,310px)!important;grid-template-rows:auto auto!important;align-items:start!important;column-gap:20px!important;row-gap:12px!important;padding:16px 20px!important}
+.site-header .brand-home{grid-column:1!important;grid-row:1!important;align-self:start!important;justify-self:start!important;margin:0!important;padding:0!important}
+.site-header .header-status{grid-column:1!important;grid-row:2!important;display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:flex-start!important;gap:12px!important;min-width:0!important;margin:0!important;padding:0 0 0 12px!important;white-space:nowrap!important}
+.site-header .header-status .stars:not([hidden]){display:inline-flex!important;position:static!important;align-items:center!important;flex:0 0 auto!important;visibility:visible!important;margin:0!important}
+.site-header .header-status .learner-title:not([hidden]){display:inline-block!important;position:static!important;flex:0 1 auto!important;margin:0!important;max-width:min(48vw,300px)!important;font-size:clamp(1.65rem,3vw,2.4rem)!important;line-height:1.2!important;color:#194a9c!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.site-header .header-status .stars[hidden],.site-header .header-status .learner-title[hidden]{display:none!important}
+.site-header .header-navigation{grid-column:2!important;grid-row:1 / 3!important;align-self:start!important;display:flex!important;flex-direction:column!important;gap:9px!important;width:100%!important}
+.site-header.login-header .header-status{visibility:hidden!important}
+@media(max-width:850px){.site-header.app{grid-template-columns:minmax(0,1fr) minmax(150px,43%)!important;column-gap:10px!important;row-gap:10px!important}.site-header .header-status{grid-column:1!important;grid-row:2!important;justify-content:flex-start!important;gap:8px!important;padding-left:0!important}.site-header .header-navigation{grid-column:2!important;grid-row:1 / 3!important}}
+@media(max-width:460px){.site-header.app{padding:12px 8px!important}.site-header .brand-home{font-size:.9rem!important}.site-header .header-status .learner-title:not([hidden]){max-width:90px!important;font-size:1.5rem!important}}
+
+
+/* alignScoreWithFamiliesButton */
+
+
+.site-header .header-status{position:absolute!important;left:20px!important;bottom:16px!important;grid-column:auto!important;grid-row:auto!important;max-width:calc(100% - 350px)!important;transform:none!important}
+@media(max-width:850px){.site-header .header-status{left:8px!important;bottom:12px!important;max-width:calc(57% - 20px)!important}}
+@media(max-width:460px){.site-header .header-status{gap:5px!important}.site-header .header-status .learner-title:not([hidden]){max-width:80px!important}}
+
+
+/* finalBrandAndScoreLayout */
+
+.site-header.app{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(250px,32%)!important;grid-template-rows:auto 1fr!important;column-gap:20px!important;align-items:start!important}
+.site-header.app .brand-home{grid-column:1!important;grid-row:1!important;align-self:start!important;font-size:clamp(1.55rem,2.6vw,2.35rem)!important;line-height:1.15!important;white-space:normal!important;padding:0!important;margin:0!important}
+.site-header.app .brand-home small{font-size:clamp(1rem,1.6vw,1.4rem)!important;line-height:1.3!important;margin-top:6px!important}
+.site-header.app .header-status{grid-column:1!important;grid-row:2!important;align-self:end!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-direction:row!important;gap:18px!important;padding:0 0 4px 12px!important;margin:0!important;min-height:65px!important;overflow:visible!important}
+.site-header.app .header-status .stars:not([hidden]){display:inline-flex!important;align-items:center!important;visibility:visible!important;opacity:1!important;position:static!important;flex:0 0 auto!important;padding:8px 14px!important;font-size:1.3rem!important}
+.site-header.app .header-status .learner-title:not([hidden]){display:block!important;max-width:none!important;font-size:clamp(2.7rem,4.8vw,4.2rem)!important;font-weight:900!important;line-height:1.1!important;white-space:nowrap!important;overflow:visible!important}
+.site-header.app .header-status .stars[hidden],.site-header.app .header-status .learner-title[hidden]{display:none!important}
+.site-header.app .header-navigation{grid-column:2!important;grid-row:1 / 3!important;align-self:stretch!important;display:flex!important;flex-direction:column!important;gap:9px!important}
+@media(max-width:650px){.site-header.app{grid-template-columns:minmax(0,1fr) minmax(155px,43%)!important;gap:8px!important}.site-header.app .brand-home{font-size:clamp(1rem,3.6vw,1.5rem)!important}.site-header.app .brand-home small{font-size:.78rem!important}.site-header.app .header-status{gap:7px!important;padding-left:0!important;min-height:48px!important}.site-header.app .header-status .stars:not([hidden]){padding:5px 8px!important;font-size:1rem!important}.site-header.app .header-status .learner-title:not([hidden]){font-size:clamp(1.8rem,6vw,2.55rem)!important;max-width:115px!important;overflow:hidden!important;text-overflow:ellipsis!important}}
+
+
+/* familyNavigationRedesign */
+
+/* Hide crossed-out duplicate family headings, old navigation and instruction banners. */
+#wordsPage .toolbar,#wordsPage .family-head,#practicePage .family-navigation,
+#wordsPage .kid-instruction,#sentencesPage .kid-instruction {display:none!important}
+#practicePage .centered-heading.family-heading #layoutTitle,
+#practicePage .centered-heading.family-heading #familySound {display:none!important}
+#practicePage .centered-heading.family-heading {position:relative!important}
+.new-family-bar{display:grid;grid-template-columns:minmax(90px,1fr) minmax(0,2.4fr) minmax(90px,1fr);align-items:center;gap:12px;padding:15px 12px}
+.new-family-bar button{cursor:pointer;border:2px solid #cbdaf6;background:white;color:#184a9d;border-radius:18px;min-height:66px;font-weight:800}
+.new-family-bar .family-audio-title{background:transparent;border:0;box-shadow:none;font-size:clamp(1.5rem,4.5vw,3.5rem);line-height:1.12}
+.new-family-bar .family-audio-title .family-ending{color:#ce252c}
+.new-family-bar .family-prev,.new-family-bar .family-next{font-size:clamp(.95rem,1.8vw,1.35rem);padding:8px}
+#pageInstructionSpeaker{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);width:92.4px;height:92.4px;border:0;background:transparent;border-radius:0;padding:0;cursor:pointer;z-index:3}
+.site-header.app{position:relative!important}
+#pageInstructionSpeaker img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+#pageInstructionSpeaker:focus-visible,.new-family-bar button:focus-visible{outline:4px solid #f6bf3a;outline-offset:3px}
+@media(max-width:850px){#pageInstructionSpeaker{left:50%;bottom:8px;width:67.2px;height:67.2px;font-size:1.5rem}.new-family-bar{gap:4px;grid-template-columns:1fr 2fr 1fr}.new-family-bar button{min-height:52px}}
+
+
+/* compactWordCardAndRedArrows */
+
+/* Only the family ending inside each navigation arrow changes color. */
+.new-family-bar .family-prev .family-ending,
+.new-family-bar .family-next .family-ending {
+  color:#c62828!important;
+  font-weight:900;
+}
+/* Reduce unused vertical space in the word-practice card.
+   Leave tap targets, question feedback and the audio controls intact. */
+#wordsPage.card {
+  padding-top:clamp(14px,2.5vw,24px)!important;
+  padding-bottom:clamp(14px,2.5vw,24px)!important;
+  min-height:0!important;
+}
+#wordsPage .word-grid {
+  margin-top:8px!important;
+  row-gap:12px;
+}
+#wordsPage .word-grid .word {
+  min-height:76px;
+}
+#wordsPage .actions {
+  margin-top:14px!important;
+  margin-bottom:0!important;
+}
+#wordsPage .game-message {
+  margin-top:8px!important;
+  min-height:22px;
+}
+@media(max-width:600px){
+  #wordsPage .word-grid .word{min-height:70px}
+}
+
+
+/* wordPracticeBottomSpacingFix */
+
+/* Target the actual inner section.card (not the outer #wordsPage). */
+#wordsPage > section.card {
+  min-height: 0 !important;
+  height: auto !important;
+  padding-top: 22px !important;
+  padding-bottom: 12px !important;
+}
+#wordsPage > section.card .actions {
+  margin-top: 14px !important;
+  margin-bottom: 0 !important;
+}
+#wordsPage > section.card #gameMessage:empty {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#wordsPage > section.card #gameMessage:not(:empty) {
+  margin-top: 10px !important;
+  min-height: 22px;
+}
+#wordsPage > section.card #storageNotice[hidden] { display: none !important; }
+
+
+/* family-image-navigation-upgrade */
+
+#homePage .kid-home-cards-updated{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+#homePage .kid-image-card{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:8px 12px;border-radius:20px;cursor:pointer;overflow:hidden}
+#homePage .kid-image-card img{display:block;width:100%;height:clamp(105px,16vw,205px);object-fit:contain}
+#homePage .kid-learn-wide{display:flex;width:100%;margin-top:12px;background:#e4f6eb;border:2px solid #9cd8b3}
+#homePage .kid-learn-wide img{height:clamp(110px,17vw,205px)}
+#homePage .kid-home-cards-updated .kid-continue{width:auto;background:#e8f5ee;border:2px solid #a6d8c2}
+#homePage .kid-image-card:hover{filter:brightness(.98)}
+@media(max-width:540px){#homePage .kid-home-cards-updated{gap:8px}#homePage .kid-image-card{padding:5px}#homePage .kid-image-card img{height:110px}#homePage .kid-learn-wide img{height:125px}}
+
+/* Soft differentiated family-page tiles and compact illustrated navigation */
+#homePage .kid-home-cards-updated {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:14px}
+#homePage .kid-home-cards-updated > .kid-image-card {height:100%;min-height:190px;margin:0;box-sizing:border-box}
+#homePage #kidContinue {background:#e8f1ff!important;border-color:#b7caf2!important}
+#homePage #kidChallenge {background:#edf0ff!important;border-color:#b9c5ef!important}
+#homePage #kidLearn {background:#fff3e7!important;border-color:#efd2ad!important}
+#homePage .kid-image-card img {max-width:100%;object-fit:contain}
+#homePage .family-tile, #homePage .family-card {border-radius:20px}
+#homePage .family-card:nth-child(5n/**/+1),#homePage .family-tile:nth-child(5n/**/+1){background:#eaf6ff}
+#homePage .family-card:nth-child(5n/**/+2),#homePage .family-tile:nth-child(5n/**/+2){background:#f2eaff}
+#homePage .family-card:nth-child(5n/**/+3),#homePage .family-tile:nth-child(5n/**/+3){background:#fff3e5}
+#homePage .family-card:nth-child(5n/**/+4),#homePage .family-tile:nth-child(5n/**/+4){background:#e9f8ee}
+#homePage .family-card:nth-child(5n/**/+5),#homePage .family-tile:nth-child(5n/**/+5){background:#fff0f5}
+.header-nav-icon {width:27px;height:27px;object-fit:contain;vertical-align:middle;flex-shrink:0;margin-right:6px}
+#parentSettingsButton,#practiceUsers,#layoutFamilies{align-items:center;justify-content:center}
+@media(max-width:540px){.header-nav-icon{width:21px;height:21px;margin-right:3px}#homePage .kid-home-cards-updated>.kid-image-card{min-height:125px}}
+
+
+/* lightPopupAndNavigation20261010 */
+
+/* Lighter reading popup and letter tiles */
+#wordReadDialog {background:#fcfdff!important; color:#34445e!important; border:1px solid #e5edfa!important;}
+#wordReadDialog .read-part, #wordReadDialog .letter-tile, #wordReadDialog .phoneme-tile {background:#f3f7ff!important; border-color:#e1eafb!important;}
+#wordReadDialog .read-part.blend {background:#eaf6ff!important;}
+#wordReadDialog .read-sentence span.active {background:#fff7d9!important;}
+#wordReadDialog #guidedBlendActions button {background:#eaf3ff!important; border:1px solid #d9e7fa!important; color:#294a76!important; box-shadow:none!important;}
+#wordReadDialog .read-navigation button {background:#f0f8f5!important; color:#c62828!important; border:1px solid #d9eae4!important; box-shadow:none!important; font-weight:800!important;}
+
+/* Swap the popup and navigation backgrounds; retain readable blue arrows and red labels. */
+#wordReadDialog {background:#f0f8f5!important;}
+#wordReadDialog .read-navigation button {background:#fcfdff!important;border-color:#dce8f4!important;color:#c62828!important;}
+#wordReadDialog .read-navigation button:hover {background:#eaf3ff!important;}
+#wordReadDialog .read-navigation .nav-arrow {color:#2068b8!important;font-weight:900!important;}
+#wordReadDialog .read-sentence {font-size:clamp(1.2rem,3vw,1.6rem)!important;line-height:1.8!important;}
+#wordReadDialog .read-sentence span.active {background:#fff0a9!important;color:#173a65!important;padding:2px 3px;border-radius:6px;}
+
+/* Soften family-page activity rectangles and family selection squares */
+#practicePage .family-actions button, #practicePage .family-action, #practicePage .family-card, #familiesPage .family-card, .family-tile {filter:saturate(.82);}
+
+
+/* familyProgressGreenAndContrast20261010 */
+
+/* Unstarted families retain the varied soft pastel colors. */
+#homePage .family-tile:not(.started) {color:#17263d!important;}
+#homePage .family-tile:not(.started) .family-tile-example,
+#homePage .family-tile:not(.started) .family-progress {color:#17263d!important;}
+/* Restore the old dark-green progress tiles, overriding the pastel nth-child rules. */
+#homePage .family-tile.started,
+#homePage .family-tile.started:nth-child(n) {
+ background:#237a39!important;
+ border-color:#165527!important;
+ box-shadow:0 6px 0 #165527!important;
+ color:#fff!important;
+}
+#homePage .family-tile.started .family-tile-example,
+#homePage .family-tile.started .family-progress,
+#homePage .family-tile.started .family-completion {color:#fff!important;}
+/* Preserve red word-family patterns inside both examples and circles. */
+#homePage .family-tile .family-circle {background:#fff!important;color:#b52b2b!important;}
+#homePage .family-tile .family-tile-example .family-label,
+#homePage .family-tile .family-tile-example .family-highlight,
+#homePage .family-tile .family-tile-example .family-part {color:#c62828!important;}
+
+
+/* Additional styles */
+.new-user-action-icon{height:62px;max-height:42px!important;width:auto!important;object-fit:contain;flex-shrink:0;margin:0}
+
+/* login-images-five-percent */
+
+/* Enlarge every login image, including the new-user form, by 5%. */
+#startPage img { transform: scale(1.05); transform-origin: center; }
+
+
+/* family-arrows-words-only */
+
+.new-family-bar .family-prev[hidden], .new-family-bar .family-next[hidden] {display:none!important;}
+.new-family-bar.without-family-arrows .family-audio-title {grid-column:1 / -1;}
+
+
+/* popup-family-arrow-style */
+
+#wordReadDialog .read-navigation button {
+  cursor:pointer; background:#fff!important; border:2px solid #cbdaf6!important;
+  color:#c62828!important; border-radius:18px!important; min-height:66px;
+  font-size:clamp(.95rem,1.8vw,1.35rem); padding:8px; font-weight:800!important; box-shadow:none!important;
+}
+#wordReadDialog .read-navigation .nav-arrow {color:#184a9d!important;}
+#wordReadDialog .read-navigation button[hidden] {display:none!important;}
+#wordReadDialog .read-navigation button:focus-visible {outline:4px solid #f6bf3a;outline-offset:3px;}
+@media(max-width:850px){#wordReadDialog .read-navigation button{min-height:52px;}}
+
+
+/* practice-png-buttons */
+
+#challenge.practice-image-button, #sentenceChallenge.practice-image-button {
+ background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;
+ width:75%;max-width:480px;min-height:0;margin-inline:auto;display:block;
+}
+.practice-image-button img {display:block;width:100%;height:auto;object-fit:contain;}
+
+
+/* hide-popup-status-text */
+#wordReadDialog #wordReadStatus {display:none!important;}
+
+/* png-selection-rewards */
+
+.reward-image{display:block;width:1em;height:1em;object-fit:contain;}
+.burst.image-stars.show{animation-duration:2.2s;}
+#wordsPage #gameMessage, #sentencesPage #sentenceMessage {display:none!important;}
+
+
+/* family-home-wide-continue */
+
+#homePage .kid-home-cards-updated {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+#homePage .kid-home-cards-updated > .kid-image-card {width:100%;height:auto;min-height:0;margin:0;padding:10px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;}
+#homePage #kidContinue {grid-column:1 / -1;aspect-ratio:3 / 1;}
+#homePage #kidLearn, #homePage #kidChallenge {aspect-ratio:3 / 2;}
+#homePage .kid-home-cards-updated .kid-image-card img {display:block;width:100%;height:100%;max-height:none;min-height:0;object-fit:contain;}
+@media(max-width:540px){#homePage .kid-home-cards-updated{gap:8px;}#homePage .kid-home-cards-updated > .kid-image-card{padding:5px;min-height:0;}}
+
+
+/* Integrated home layout */
+
+
+#homePage #kidChallenge{grid-column:2!important;grid-row:1!important;aspect-ratio:3/2!important;}
+#homePage #kidLearn{grid-column:1/-1!important;grid-row:2!important;aspect-ratio:auto!important;min-height:125px!important;}
+#homePage .kid-home-cards-updated .kid-image-card img{width:100%!important;height:100%!important;max-height:220px!important;object-fit:contain!important;}
+@media(max-width:540px){#homePage .kid-home-cards-updated .kid-image-card img{max-height:145px!important;}}
+
+
+/* family-quiz-png-button */
+
+#familyWordHear.practice-image-button {background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;width:75%;max-width:480px;min-width:0;min-height:0;margin:20px auto 8px;display:block;}
+#familyWordFeedback {display:none!important;}
+
+
+/* final-quiz-png-button */
+
+#quizHear.practice-image-button {background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;width:75%;max-width:480px;min-width:0;min-height:0;margin:20px auto 8px;display:block;}
+#finalChallengeInstruction{display:none!important;}
+#quizFeedback {display:none!important;}
+
+
+/* compact-families-card-borders */
+
+#homePage .kid-home-cards-updated > .kid-image-card {padding:0!important;min-height:0!important;}
+#homePage .family-tile {min-height:0;padding:10px 6px;gap:8px;}
+
+
+/* clean-all-words-navigation */
+#practicePage .centered-heading[hidden]{display:none!important;}
+
+/* Additional styles */
+
+#nameForm .start-button, #nameForm #cancelNewUser {display:flex;align-items:center;justify-content:center;gap:15px;font-size:clamp(1.3rem,4vw,2rem)!important;font-weight:900!important;}
+
+
+/* elari-branding-images */
+
+.brand-wordmark {display:block;min-width:0;max-width:100%;}
+.brand-logo {display:block;width:clamp(180px,36vw,480px);max-width:100%;height:auto;object-fit:contain;}
+.site-header .brand-home {min-width:0;}
+.site-header .brand-wordmark small {margin-top:0!important;}
+.footer-fox {display:block;width:110px;max-width:25vw;height:auto;margin:20px auto 4px;}
+footer p {margin-top:4px;}
+@media(max-width:650px){.brand-logo{width:100%;}.brand-wordmark{flex:1;}.brand-home .brand-cap-image{width:32px;height:32px;}.footer-fox{width:90px;}}
+
+
+/* compact-header-logo */
+
+.site-header.app .brand-home {align-items:flex-start!important;gap:10px!important;}
+.site-header .brand-wordmark {width:clamp(160px,32vw,420px);max-width:100%;}
+.site-header .brand-logo {width:100%;height:auto;aspect-ratio:5.6 / 1;object-fit:cover;object-position:center;}
+.site-header .brand-home .brand-cap-image {margin-top:8px;width:40px;height:40px;}
+.site-header.app .brand-wordmark small {font-size:clamp(.8rem,1.35vw,1.2rem)!important;line-height:1.3!important;margin-top:8px!important;}
+.site-header.app .header-status {position:static!important;grid-column:1!important;grid-row:2!important;max-width:100%!important;align-self:start!important;}
+@media(max-width:650px){.site-header .brand-wordmark{width:100%;}.site-header .brand-home .brand-cap-image{width:28px;height:28px;margin-top:3px;}.site-header.app .brand-wordmark small{font-size:.75rem!important;}}
+
+
+/* larger-cap-login-footer */
+
+.site-header.app .brand-home .brand-cap-image {width:64px!important;height:64px!important;margin-top:0!important;flex-shrink:0;}
+#startPage:not([hidden]) {display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:0;}
+#startPage > .start-card {flex-shrink:0;}
+#startPage > .login-brand-footer {display:block;width:100%;flex-shrink:0;align-self:center;margin-top:auto;padding:24px 0 16px;}
+@media(max-width:650px){.site-header.app .brand-home .brand-cap-image{width:44px!important;height:44px!important;}}
+
+
+/* Additional styles */
+
+.word-diagnostics{margin:16px 0;padding:12px;border:1px solid #bfcef0;border-radius:12px;overflow-x:auto}
+.word-diagnostics h3{margin:0 0 6px}
+.word-diagnostics p{font-size:.9rem;line-height:1.4}
+.word-diagnostics table{width:100%;border-collapse:collapse;font-size:.85rem}
+.word-diagnostics th,.word-diagnostics td{border-bottom:1px solid #dce3f0;text-align:left;padding:7px 5px;white-space:nowrap}
+
+
+/* parentDialogReopenFix */
+.parent-dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:-24px;background:inherit;background-color:#fff;padding:6px 0 12px;z-index:2}.parent-dialog-heading h2{margin:0}#parentSettings:not([open]){display:none!important}
+
+/* learningPictureLayout */
+
+/* Image-enhanced decoding popup: preserve all existing audio and navigation handlers. */
+#wordReadDialog #buildPictureLayout{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,32px);width:100%;min-width:0}
+#wordReadDialog #buildLetterArea{flex:1 1 auto;min-width:0;max-width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#wordReadDialog .learning-picture{display:block;object-fit:contain;flex:0 0 auto;width:clamp(110px,29%,265px);height:clamp(140px,26vw,290px);max-width:100%;border-radius:14px}
+#wordReadDialog .learning-picture[hidden]{display:none!important}
+#wordReadDialog #buildSlots,#wordReadDialog #buildLetters{display:flex!important;flex-wrap:nowrap!important;align-items:center;justify-content:center;gap:var(--letter-gap,8px)!important;width:100%;margin:7px auto!important}
+#wordReadDialog #buildWordExercise{--letter-size:clamp(48px,6.5vw,76px);--letter-height:clamp(55px,7vw,85px);--letter-gap:8px}
+#wordReadDialog #buildWordExercise[data-letters="5"],#wordReadDialog #buildWordExercise[data-letters="6"]{--letter-size:clamp(38px,5vw,60px);--letter-height:clamp(47px,6vw,70px);--letter-gap:6px}
+#wordReadDialog #buildWordExercise[data-letters="7"],#wordReadDialog #buildWordExercise[data-letters="8"]{--letter-size:clamp(30px,3.8vw,49px);--letter-height:clamp(38px,4.8vw,59px);--letter-gap:4px}
+#wordReadDialog #buildSlots .build-slot,#wordReadDialog #buildLetters button{box-sizing:border-box;flex:0 1 var(--letter-size);width:var(--letter-size);min-width:0!important;height:var(--letter-height);min-height:0!important;font-size:clamp(1.05rem,2.6vw,2.5rem);padding:0 1px}
+#wordReadDialog #buildWordExercise[data-letters="7"] #buildSlots .build-slot,#wordReadDialog #buildWordExercise[data-letters="7"] #buildLetters button,#wordReadDialog #buildWordExercise[data-letters="8"] #buildSlots .build-slot,#wordReadDialog #buildWordExercise[data-letters="8"] #buildLetters button{font-size:clamp(.95rem,2vw,1.9rem)}
+#wordReadDialog .build-bottom-actions{width:100%;display:flex!important;justify-content:center!important;align-items:center;gap:clamp(14px,3vw,40px)!important}
+#wordReadDialog #sentencePictureLayout{display:flex;align-items:center;justify-content:center;gap:clamp(15px,4vw,38px);max-width:100%;margin:6px auto 12px}
+#wordReadDialog #sentencePictureLayout #wordReadSentence{margin:4px 0!important;max-width:65%!important;flex:0 1 auto}
+#wordReadDialog #sentencePictureLayout #sentencePicture{width:clamp(120px,34%,270px);height:clamp(150px,28vw,285px)}
+#wordReadDialog #sentencePictureLayout:has(#sentencePicture[hidden]) #wordReadSentence{max-width:100%!important;margin:4px auto!important}
+@media(max-width:650px){
+ #wordReadDialog #buildPictureLayout{gap:6px}
+ #wordReadDialog #buildPictureLayout #wordPicture{width:clamp(75px,24%,145px);height:clamp(100px,25vw,170px)}
+ #wordReadDialog #buildWordExercise{--letter-size:clamp(33px,6vw,52px);--letter-height:clamp(40px,7vw,62px);--letter-gap:4px}
+ #wordReadDialog #buildWordExercise[data-letters="5"],#wordReadDialog #buildWordExercise[data-letters="6"]{--letter-size:clamp(27px,5vw,40px);--letter-height:clamp(36px,6vw,50px);--letter-gap:3px}
+ #wordReadDialog #buildWordExercise[data-letters="7"],#wordReadDialog #buildWordExercise[data-letters="8"]{--letter-size:clamp(23px,4vw,32px);--letter-height:clamp(32px,5vw,43px);--letter-gap:2px}
+ #wordReadDialog #sentencePictureLayout{gap:8px}
+ #wordReadDialog #sentencePictureLayout #sentencePicture{width:30%;height:clamp(110px,26vw,175px)}
+ #wordReadDialog #sentencePictureLayout #wordReadSentence{max-width:68%!important}
+}
+
+
+/* Additional styles */
+
+/* Build the Word — aligned image controls and parent help requests */
+#wordReadDialog .build-bottom-actions{display:flex!important;align-items:center!important;justify-content:center!important;gap:2px!important;flex-wrap:nowrap!important;width:100%!important;margin:12px auto 4px!important;}
+#wordReadDialog .build-bottom-actions button{flex:0 1 100px!important;min-width:0!important;display:flex;align-items:center;justify-content:center;padding:0!important;border:0!important;background:transparent!important;cursor:pointer;}
+#wordReadDialog .build-bottom-actions button img{display:block!important;width:100%!important;max-width:110px!important;height:78px!important;object-fit:contain!important;}
+#wordReadDialog .build-bottom-actions #buildSpeak img{max-width:95px!important;}
+#wordReadDialog .build-bottom-actions #buildHelp img{max-width:110px!important;}
+#wordReadDialog .build-bottom-actions button:focus-visible{outline:3px solid #2b67c7;outline-offset:4px;border-radius:10px;}
+#buildHelp.help-confirm{animation:helpButtonBounce .65s ease-out;}
+@keyframes helpButtonBounce{0%,100%{transform:scale(1)}40%{transform:scale(1.16)}}
+.parent-help-section{padding:14px 16px;margin:16px 0 12px;background:#eef5ff;border:2px solid #c5d7f2;border-radius:15px;}
+.parent-help-section h3{font-size:1.22rem;color:#174c91;margin:0 0 7px;}
+.parent-help-section .parent-overview-note{margin:5px 0 10px;}
+.parent-help-list{display:flex;flex-wrap:wrap;gap:9px;}
+.parent-help-word{border:2px solid #91b6e9;border-radius:12px;background:white;color:#164a8d;font-size:1.05rem;font-weight:800;padding:10px 15px;cursor:pointer;min-height:44px;}
+.parent-help-word:hover,.parent-help-word:focus-visible{background:#d9e9ff;}
+.parent-help-empty{color:#5c708c;margin:7px 0;}
+@media(max-width:520px){#wordReadDialog .build-bottom-actions button img{height:60px!important}.parent-help-section{padding:10px;}}
+
+
+/* Additional styles */
+
+/* Word Families page help: illustrated parchment-style modal */
+#wfHowToDialog{box-sizing:border-box;width:min(95vw,790px);max-height:min(90dvh,850px);overflow:auto;border:7px solid #94501f;border-radius:29px;padding:clamp(22px,4.2vw,43px);background:linear-gradient(145deg,#fff8de,#ffe0a4);box-shadow:0 12px 0 #653612,0 20px 35px #0007;color:#382516;font-family:inherit;}
+#wfHowToDialog::backdrop{background:rgba(0,0,0,.65)}
+#wfHowToDialog h2{margin:0 0 15px;color:#783807;font-size:clamp(1.85rem,4.8vw,3rem);line-height:1.15}
+#wfHowToDialog h3{margin:20px 0 8px;color:#744014;font-size:clamp(1.2rem,3.2vw,1.6rem)}
+#wfHowToDialog p,#wfHowToDialog li{font-size:clamp(1rem,2.4vw,1.25rem);font-weight:650;line-height:1.5}
+#wfHowToDialog ul{padding-left:25px;margin:8px 0 14px}
+#wfHowToDialog .wf-help-actions{text-align:center;margin-top:22px}
+#wfHelpClose{border:4px solid #18538b;border-radius:16px;background:#2286ca;color:#fff;font-size:clamp(1rem,2.5vw,1.35rem);font-weight:800;padding:12px 28px;cursor:pointer}
+#wfHelpClose:hover{background:#146baa}#wfHelpClose:focus-visible{outline:3px solid #333;outline-offset:3px}
+@media(max-width:500px){#wfHowToDialog{border-width:5px;border-radius:20px;padding:19px}#wfHowToDialog ul{padding-left:21px}}
+
+/* Compact instructional pop-ups, matching the parchment styling. */
+#wfHowToDialog h2{font-size:clamp(1.4rem,3.4vw,2.1rem);margin-bottom:12px;font-weight:850}
+#wfHowToDialog p,#wfHowToDialog li{font-size:clamp(.86rem,1.65vw,1rem);font-weight:500;line-height:1.48}
+#wfHelpIntro{font-weight:750!important}
+#wfHowToDialog li strong{font-weight:850}
+#wfHowToDialog ul{margin:11px 0 14px;padding-left:23px}
+#wfHowToDialog li{margin-bottom:9px}
+#wfHowToDialog .wf-help-outro{font-weight:800;margin-top:17px}
+#wfHowToDialog .wf-help-section-title{font-size:clamp(1.08rem,2.5vw,1.4rem);font-weight:850;color:#783807;margin:18px 0 10px;padding-top:14px;border-top:2px solid rgba(116,59,11,.3)}
+#wfHowToDialog .wf-help-button-steps{margin-top:8px;margin-bottom:14px}
+@media(max-width:500px){#wfHowToDialog p,#wfHowToDialog li{font-size:.88rem;line-height:1.4}#wfHowToDialog li{margin-bottom:8px}}
+
+
+/* four-option-family-home */
+
+#homePage .kid-home-cards-updated{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+#homePage #kidContinue{grid-column:1!important;grid-row:1!important;aspect-ratio:3/2!important}
+#homePage #kidLearn{grid-column:1!important;grid-row:2!important;aspect-ratio:3/2!important;min-height:0!important}
+#homePage #kidChallenge{grid-column:2!important;grid-row:2!important;aspect-ratio:3/2!important;min-height:0!important}
+#homePage .kid-home-cards-updated .kid-image-card{min-width:0!important;min-height:0!important;height:auto!important}
+#homePage .kid-home-cards-updated .kid-image-card img{width:100%!important;height:100%!important;max-height:220px!important;object-fit:contain!important}
+@media(max-width:540px){#homePage .kid-home-cards-updated{gap:8px!important}#homePage .kid-home-cards-updated .kid-image-card img{max-height:145px!important}}
+
+
+/* all-families-tile-order-final */
+
+/* Home: Continue / Word List / Player Trivia */
+#homePage .kid-home-cards-updated {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+#homePage #kidContinue {grid-column:1!important;grid-row:1!important;aspect-ratio:3/2!important;}
+#homePage #kidLearn {grid-column:2!important;grid-row:1!important;aspect-ratio:3/2!important;min-height:0!important;}
+#homePage #kidChallenge {grid-column:1!important;grid-row:2!important;aspect-ratio:3/2!important;min-height:0!important;}
+
+
+/* familyLearningPathPositionTint */
+
+/* Keep the uncompleted track pale. Only the completed share fills blue. */
+#practicePage #familyLearningPath.learning-path {
+  --progress-fill: 0%;
+  width: min(100%, 900px); margin: 3px auto 12px;
+  padding: 9px clamp(8px,2vw,20px);
+  background: linear-gradient(to right, #91bdf2 0%, #91bdf2 var(--progress-fill), #edf5ff var(--progress-fill), #edf5ff 100%);
+  border: 1px solid #d1e2fb;
+}
+#practicePage #familyLearningPath[data-completed="1"] {--progress-fill:33.333%;}
+#practicePage #familyLearningPath[data-completed="2"] {--progress-fill:66.667%;}
+#practicePage #familyLearningPath[data-completed="3"] {--progress-fill:100%;}
+@media(max-width:480px){#practicePage #familyLearningPath.learning-path{width:100%;padding:7px 5px;margin:3px auto 9px;}}
+
+
+/* familyLearningPathStyles */
+
+/* Compact responsive three-stage progress route beneath family navigation. */
+#familyLearningPath[hidden] { display:none!important; }
+#familyLearningPath.learning-path {display:flex;align-items:center;justify-content:center;gap:clamp(3px,.8vw,11px);width:min(100%,660px);max-width:100%;margin:7px auto 0;padding:7px 14px;border:1px solid #cedef6;border-radius:14px;background:linear-gradient(105deg,#edf5ff,#f2f0ff);box-shadow:0 2px 5px rgba(25,45,80,.04);box-sizing:border-box;}
+#familyLearningPath .learning-step{display:flex;flex:1 1 0;min-width:0;flex-direction:column;align-items:center;gap:2px;color:#969ba5;}
+#familyLearningPath .learning-node{width:clamp(23px,3vw,32px);height:clamp(23px,3vw,32px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(15px,1.65vw,19px);line-height:1;font-weight:800;color:#959a9f;background:transparent;}
+#familyLearningPath .learning-label{font-size:clamp(9px,1.12vw,12px);line-height:1.15;white-space:nowrap;font-weight:550;}
+#familyLearningPath .learning-chevron{color:#999da5;font-size:20px;flex:0 0 auto;line-height:1;margin-top:-9px;}
+#familyLearningPath .learning-step.is-complete{color:#183a2b;}
+#familyLearningPath .learning-step.is-complete .learning-node{color:#228a55;background:#e1f1e7;}
+#familyLearningPath .learning-step.is-current{color:#152d56;}
+#familyLearningPath .learning-step.is-current .learning-node{background:#e3ebff;color:#132b50;}
+#familyLearningPath .learning-step.is-current .learning-label{font-weight:800;}
+@media(max-width:480px){#familyLearningPath.learning-path{width:min(96vw,470px);padding:6px 5px;gap:2px;}#familyLearningPath .learning-chevron{font-size:15px;}#familyLearningPath .learning-label{font-size:9px;}}
+
+
+/* familyCelebrationEnhancements */
+
+#familyLearningPath.learning-path{min-width:0;}
+.burst.complete.show{animation-duration:3.2s!important;}
+#familyLearningPath .learning-label{text-align:center;}
+#familyFinishDialog{border:0;background:transparent;padding:0;max-width:min(94vw,510px);width:100%;overflow:visible;}
+#familyFinishDialog::backdrop{background:rgba(10,27,57,.65);backdrop-filter:blur(3px);}
+.family-finish-card{background:linear-gradient(160deg,#f0f7ff,#ffffff 55%,#fff5df);border:3px solid #b8d3ff;border-radius:24px;padding:clamp(16px,4vw,30px);text-align:center;box-shadow:0 16px 55px #10295155;display:grid;justify-items:center;gap:12px;color:#15335f;}
+.family-finish-prize{width:min(46vw,195px);height:min(46vw,195px);object-fit:contain;animation:finishFloat 2.6s ease-in-out infinite alternate;}
+.family-finish-card h2{font-size:clamp(1.5rem,4vw,2.2rem);margin:0;}
+.family-finish-card p{margin:0;font-size:clamp(1rem,2.4vw,1.25rem);}
+#familyFinishContinue{border:2px solid #1554bc;background:linear-gradient(#4e9cff,#1264d7);color:white;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;padding:12px 22px;border-radius:18px;cursor:pointer;min-height:50px;}
+#familyFinishContinue:focus-visible{outline:4px solid #ffc83d;outline-offset:3px;}
+@keyframes finishFloat{from{transform:translateY(0) scale(1)}to{transform:translateY(-8px) scale(1.035)}}
+@media(prefers-reduced-motion:reduce){.family-finish-prize{animation:none}}
+
+
+/* separate-completed-family-page */
+
+#homePage #kidCompleted { grid-column:1 / -1!important;grid-row:3!important;aspect-ratio: auto!important;min-height:130px!important;background:#f0f4fa!important;border:2px solid #bfd3ed!important; }
+#homePage #kidCompleted img {width:100%;max-width:690px;height:clamp(130px,24vw,230px);object-fit:contain}
+#homePage #kidFamilyList[hidden],#homePage .kid-home[hidden]{display:none!important}
+#homePage .completed-page-toolbar {display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px;flex-wrap:wrap}
+#homePage .completed-page-toolbar button {border:2px solid #cbdaf4;background:#eff5ff;border-radius:16px;color:#205399;padding:12px 18px;font-weight:800;cursor:pointer}
+#homePage .completed-page-toolbar button:focus-visible {outline:3px solid #f7c54b;outline-offset:3px}
+
+
+/* compactFamilyChallenge20261019 */
+
+/* Keep heading in DOM for accessibility and dynamic updates, but not visually displayed. */
+#familyWordQuiz #familyWordTitle,
+#familyWordQuiz > .prompt,
+#familyWordQuiz #familyWordCounter { display:none !important; }
+#familyGroupQuizPage #familyWordQuiz {
+  min-height:0 !important;
+  height:auto !important;
+  padding:clamp(12px,2vw,22px) !important;
+  margin-top:8px !important;
+}
+#familyWordQuiz #familyWordChoices {
+  margin:0 0 8px !important;
+  gap:clamp(8px,1.3vw,14px) !important;
+}
+#familyWordQuiz #familyWordHear {
+  margin:8px auto 0 !important;
+}
+#familyWordQuiz #familyWordFeedback:empty,
+#familyWordQuiz .actions:has(> #familyWordNext[hidden]) {
+  display:none !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#familyWordQuiz #familyWordFeedback:not(:empty) {margin:8px 0 0 !important;min-height:0 !important;}
+#familyWordQuiz .actions { margin:8px 0 0 !important; }
+
+
+/* home-menu-order-20261019 */
+
+/* Home menu: a full-width Continue Playing tile, then two paired rows. */
+#homePage .kid-home-cards-updated {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;}
+#homePage .kid-home-cards-updated > #kidContinue {grid-column:1 / -1!important;grid-row:1!important;aspect-ratio:auto!important;min-height:155px!important;}
+#homePage .kid-home-cards-updated > #kidLearn {grid-column:1!important;grid-row:2!important;aspect-ratio:3 / 2!important;}
+#homePage .kid-home-cards-updated > #kidCompleted {grid-column:2!important;grid-row:2!important;aspect-ratio:3 / 2!important;}
+#homePage .kid-home-cards-updated > #kidChallenge {grid-column:1!important;grid-row:3!important;aspect-ratio:3 / 2!important;}
+#homePage .kid-home-cards-updated > .kid-image-card {width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+#homePage .kid-home-cards-updated > #kidContinue img {max-height:210px!important;width:100%!important;object-fit:contain!important;}
+@media(max-width:540px){#homePage .kid-home-cards-updated{gap:8px!important}#homePage .kid-home-cards-updated > #kidContinue{min-height:108px!important}#homePage .kid-home-cards-updated > #kidContinue img{max-height:140px!important}}
+
+
+/* cleanCompletedFamilyGrid20261019 */
+
+/* Remove the redundant Back to Menu / Info toolbar and whitespace above family cards.
+   The Home header navigation remains available, and the handlers stay in the DOM. */
+#homePage #kidFamilyList .completed-page-toolbar { display:none !important; }
+#homePage #kidFamilyList { padding-top:0 !important; border-top:0 !important; margin-top:0 !important; }
+#homePage #kidFamilyList .family-picker-grid { margin-top:0 !important; }
+#homePage #kidFamilyList #allWordsQuizTotals,
+#homePage #kidFamilyList #practiceSummary,
+#homePage #kidFamilyList > .actions { display:none !important; }
+
+
+/* elari-responsive-header-20261019 */
+
+/* One responsive header, replacing the old fixed pixel positions. */
+.site-header.app {
+  --hdr-gap: clamp(5px, .7vw, 13px);
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  grid-template-rows: auto !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: clamp(74px, 7vw, 112px) !important;
+  height: auto !important;
+  padding: clamp(7px, 1vw, 15px) clamp(8px, 1.1vw, 22px) !important;
+  gap: var(--hdr-gap) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+.site-header.app .brand-cap-image,
+.site-header.app .superkid-avatar { display: none !important; }
+.site-header.app .header-status {
+  position: static !important; transform: none !important;
+  inset: auto !important; grid-column: 1 !important; grid-row: 1 !important;
+  display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
+  justify-self: start !important; align-self: center !important; align-items: center !important;
+  width: auto !important; max-width: min(100%, calc(50vw - 175px)) !important;
+  min-width: 0 !important; gap: clamp(4px, .6vw, 10px) !important;
+  padding: 0 !important; margin: 0 !important; z-index: 2 !important;
+}
+.site-header.app .header-status .learner-title:not([hidden]) {
+  order: 0 !important; position: static !important; transform: none !important;
+  display: flex !important; flex: 0 1 auto !important; min-width: 0 !important;
+  max-width: min(13vw, 190px) !important; min-height: clamp(44px, 4.1vw, 66px) !important;
+  height: auto !important; padding: clamp(5px,.65vw,10px) clamp(7px,.9vw,15px) !important;
+  border-radius: clamp(10px,1vw,17px) !important; overflow: hidden !important;
+  text-overflow: ellipsis !important; white-space: nowrap !important;
+  font-size: clamp(0.975rem,1.5vw,1.65rem) !important;
+}
+.site-header.app .header-status .stars:not([hidden]) {
+  order: 1 !important; position: static !important; transform: none !important;
+  display: flex !important; flex: 0 0 auto !important; min-width: 0 !important;
+  min-height: clamp(44px,4.1vw,66px) !important;
+  max-width: none !important; margin: 0 !important;
+  padding: clamp(4px,.6vw,9px) clamp(6px,.7vw,12px) !important;
+  border-radius: clamp(10px,1vw,17px) !important;
+  font-size: clamp(.82rem,1.1vw,1.2rem) !important;
+}
+.site-header.app .header-status .stars img {
+  width: clamp(21px,2.2vw,38px) !important;
+  height: clamp(21px,2.2vw,38px) !important; object-fit: contain !important;
+}
+.site-header.app .brand-home {
+  position: absolute !important; grid-column: auto !important; grid-row: auto !important;
+  left: 50% !important; top: 50% !important; right: auto !important; bottom: auto !important;
+  transform: translate(-50%,-50%) !important; margin: 0 !important;
+  width: clamp(135px,18vw,270px) !important; max-width: 270px !important;
+  min-width: 0 !important; min-height: 0 !important; padding: 0 !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  text-align: center !important; z-index: 2 !important;
+}
+.site-header.app .brand-wordmark {
+  display: flex !important; flex-direction: column !important;
+  align-items: center !important; justify-content: center !important;
+  min-width: 0 !important; width: 100% !important;
+}
+.site-header.app .brand-logo {
+  display: block !important; width: auto !important; height: auto !important;
+  max-width: 100% !important; max-height: clamp(31px,3.15vw,49px) !important;
+  object-fit: contain !important; aspect-ratio: auto !important; margin: 0 auto !important;
+}
+.site-header.app .brand-home small {
+  font-size: clamp(.5rem,.81vw,.85rem) !important;
+  line-height: 1.16 !important; margin-top: 3px !important;
+  text-align: center !important; white-space: nowrap !important;
+}
+.site-header.app #pageInstructionSpeaker {
+  position: absolute !important; grid-column: auto !important; grid-row: auto !important;
+  left: calc(50% + clamp(76px,10vw,150px)) !important; right: auto !important;
+  top: 50% !important; bottom: auto !important; transform: translateY(-50%) !important;
+  width: clamp(41px,4.3vw,70px) !important; max-width: 70px !important;
+  height: clamp(41px,4.3vw,65px) !important; min-height: 0 !important;
+  margin: 0 !important; padding: clamp(3px,.35vw,6px) !important;
+  border-radius: clamp(10px,.9vw,15px) !important; box-sizing: border-box !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  z-index: 3 !important;
+}
+.site-header.app #pageInstructionSpeaker img {
+  width: 100% !important; height: 100% !important;
+  max-height: 100% !important; max-width: 100% !important; object-fit: contain !important;
+}
+.site-header.app .header-navigation {
+  position: static !important; grid-column: 2 !important; grid-row: 1 !important;
+  transform: none !important; inset: auto !important;
+  justify-self: end !important; align-self: center !important;
+  display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+  grid-auto-flow: row !important; align-items: stretch !important;
+  gap: clamp(4px,.6vw,9px) !important; width: clamp(205px,23vw,340px) !important;
+  max-width: 340px !important; min-width: 0 !important; padding: 0 !important;
+  margin: 0 !important; z-index: 2 !important;
+}
+.site-header.app .header-navigation > #parentSettingsButton,
+.site-header.app .header-navigation > #practiceUsers,
+.site-header.app .header-navigation > #layoutFamilies {
+  width: 100% !important; max-width: none !important; min-width: 0 !important;
+  height: clamp(50px,5.2vw,82px) !important;
+  min-height: clamp(50px,5.2vw,82px) !important;
+  padding: clamp(3px,.45vw,8px) 3px !important;
+  border-radius: clamp(10px,1vw,17px) !important;
+  font-size: clamp(.62rem,.9vw,1rem) !important; line-height: 1.06 !important;
+  display: flex !important; flex-direction: column !important;
+  justify-content: center !important; align-items: center !important; gap: 2px !important;
+  text-align: center !important; white-space: normal !important;
+}
+.site-header.app .header-navigation .header-nav-icon {
+  width: clamp(17px,1.8vw,27px) !important;
+  height: clamp(17px,1.8vw,27px) !important; object-fit: contain !important;
+}
+/* Tablet: two rows prevent the controls encroaching on the centered wordmark. */
+@media (max-width: 1200px) {
+  .site-header.app {
+    min-height: 0 !important; grid-template-columns: minmax(0,1fr) auto !important;
+    grid-template-rows: clamp(57px,7vw,77px) auto !important;
+    row-gap: clamp(5px,1vw,10px) !important; padding: clamp(7px,1vw,12px) !important;
+  }
+  .site-header.app .brand-home {
+    top: clamp(35px,4.1vw,45px) !important; width: clamp(150px,23vw,230px) !important;
+  }
+  .site-header.app .brand-logo { max-height: clamp(34px,4vw,45px) !important; }
+  .site-header.app #pageInstructionSpeaker {
+    top: clamp(35px,4.1vw,45px) !important;
+    left: calc(50% + clamp(85px,13vw,132px)) !important;
+  }
+  .site-header.app .header-status {
+    grid-column: 1 !important; grid-row: 2 !important;
+    max-width: 100% !important; width: auto !important;
+  }
+  .site-header.app .header-status .learner-title:not([hidden]) { max-width: 33vw !important; }
+  .site-header.app .header-navigation {
+    grid-column: 2 !important; grid-row: 2 !important;
+    width: clamp(220px,38vw,330px) !important; max-width: 100% !important;
+  }
+}
+/* Phones: logo and Info, then name and score, then all three navigation buttons. */
+@media (max-width: 700px) {
+  .site-header.app {
+    grid-template-columns: minmax(0,1fr) !important;
+    grid-template-rows: 62px auto auto !important;
+    row-gap: 8px !important; padding: 8px !important;
+  }
+  .site-header.app .brand-home {
+    top: 35px !important; width: min(62vw,230px) !important;
+  }
+  .site-header.app .brand-logo { max-height: 42px !important; }
+  .site-header.app .brand-home small {
+    font-size: clamp(.52rem,1.8vw,.75rem) !important;
+  }
+  .site-header.app #pageInstructionSpeaker {
+    left: auto !important; right: 2px !important; top: 35px !important;
+    width: clamp(40px,11vw,52px) !important; height: clamp(40px,11vw,52px) !important;
+  }
+  .site-header.app .header-status {
+    grid-column: 1 !important; grid-row: 2 !important;
+    max-width: 100% !important; gap: 7px !important; justify-self: start !important;
+  }
+  .site-header.app .header-status .learner-title:not([hidden]) {
+    max-width: min(52vw,230px) !important; min-height: 43px !important;
+    font-size: clamp(1.05rem,4.2vw,1.5rem) !important; padding: 6px 10px !important;
+  }
+  .site-header.app .header-status .stars:not([hidden]) {
+    min-height: 43px !important; font-size: .98rem !important; padding: 5px 8px !important;
+  }
+  .site-header.app .header-navigation {
+    grid-column: 1 !important; grid-row: 3 !important;
+    width: 100% !important; max-width: none !important; justify-self: stretch !important;
+    gap: 6px !important;
+  }
+  .site-header.app .header-navigation > #parentSettingsButton,
+  .site-header.app .header-navigation > #practiceUsers,
+  .site-header.app .header-navigation > #layoutFamilies {
+    height: clamp(57px,13vw,70px) !important;
+    min-height: clamp(57px,13vw,70px) !important;
+    font-size: clamp(.72rem,2.7vw,.9rem) !important;
+  }
+  .site-header.app .header-navigation .header-nav-icon {
+    width: clamp(19px,5vw,24px) !important; height: clamp(19px,5vw,24px) !important;
+  }
+}
+
+
+/* elari-compact-headers-20261019 */
+
+/* Compact controls on smaller devices, with readable minimum font sizes. */
+@media (max-width:1200px) {
+ .site-header.app {padding:clamp(4px,.8vw,9px)!important;row-gap:5px!important;}
+ .site-header.app .header-navigation {width:clamp(176px,34vw,290px)!important;gap:4px!important;}
+ .site-header.app .header-navigation > #parentSettingsButton,
+ .site-header.app .header-navigation > #practiceUsers,
+ .site-header.app .header-navigation > #layoutFamilies {
+   height:clamp(38px,5.3vw,59px)!important;min-height:clamp(38px,5.3vw,59px)!important;
+   padding:3px 2px!important;gap:1px!important;border-radius:10px!important;
+   font-size:clamp(.60rem,1.15vw,.78rem)!important;
+ }
+ .site-header.app .header-navigation .header-nav-icon {width:clamp(15px,1.8vw,21px)!important;height:clamp(15px,1.8vw,21px)!important;}
+ .site-header.app .header-status .stars:not([hidden]) {min-height:39px!important;padding:3px 6px!important;font-size:.85rem!important;}
+ .site-header.app .header-status .stars img {width:25px!important;height:25px!important;}
+ .site-header.app .header-status .learner-title:not([hidden]) {min-height:39px!important;font-size:clamp(1.095rem,2.4vw,1.5rem)!important;padding:5px 8px!important;border-radius:10px!important;}
+}
+@media (max-width:700px) {
+ .site-header.app {grid-template-rows:52px auto auto!important;row-gap:5px!important;padding:5px 7px!important;}
+ .site-header.app .brand-home {top:29px!important;width:min(55vw,185px)!important;}
+ .site-header.app .brand-logo {max-height:33px!important;}
+ .site-header.app .brand-home small {font-size:clamp(.45rem,1.65vw,.65rem)!important;white-space:normal!important;}
+ .site-header.app #pageInstructionSpeaker {top:27px!important;width:clamp(34px,8vw,43px)!important;height:clamp(34px,8vw,43px)!important;right:5px!important;padding:2px!important;}
+ .site-header.app .header-status {gap:5px!important;}
+ .site-header.app .header-status .learner-title:not([hidden]) {min-height:36px!important;max-width:min(46vw,180px)!important;font-size:clamp(1.125rem,4.05vw,1.5rem)!important;padding:4px 7px!important;}
+ .site-header.app .header-status .stars:not([hidden]) {min-height:36px!important;padding:3px 6px!important;font-size:.85rem!important;}
+ .site-header.app .header-status .stars img {width:24px!important;height:24px!important;}
+ .site-header.app .header-navigation {width:100%!important;max-width:none!important;gap:5px!important;}
+ .site-header.app .header-navigation > #parentSettingsButton,
+ .site-header.app .header-navigation > #practiceUsers,
+ .site-header.app .header-navigation > #layoutFamilies {
+    min-height:clamp(38px,9vw,49px)!important;height:clamp(38px,9vw,49px)!important;
+    padding:2px 3px!important;gap:1px!important;border-radius:9px!important;
+    font-size:clamp(.58rem,2.45vw,.8rem)!important;line-height:1.05!important;
+ }
+ .site-header.app .header-navigation .header-nav-icon {width:clamp(15px,4vw,20px)!important;height:clamp(15px,4vw,20px)!important;}
+}
+
+
+/* elari-single-row-header-override */
+
+/* Keep desktop and tablet header controls on the same row. */
+@media (min-width: 701px) {
+ .site-header.app {
+   position:relative!important;
+   display:grid!important;
+   grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+   grid-template-rows:auto!important;
+   row-gap:0!important;
+   min-height:clamp(66px,6.5vw,92px)!important;
+   padding:clamp(5px,.9vw,12px)!important;
+ }
+ .site-header.app .header-status {
+   grid-column:1!important;grid-row:1!important;
+   align-self:center!important;justify-self:start!important;
+   max-width:calc(50% - clamp(75px,10vw,135px))!important;
+   z-index:2!important;
+ }
+ .site-header.app .header-navigation {
+   grid-column:2!important;grid-row:1!important;
+   align-self:center!important;justify-self:end!important;
+   width:clamp(180px,23vw,320px)!important;
+   max-width:calc(50vw - clamp(110px,13vw,185px))!important;
+   z-index:2!important;
+ }
+ .site-header.app .brand-home {
+   position:absolute!important;left:50%!important;top:50%!important;
+   transform:translate(-50%,-50%)!important;
+   width:clamp(125px,18vw,270px)!important;
+   max-width:270px!important;
+ }
+ .site-header.app #pageInstructionSpeaker {
+   position:absolute!important;
+   left:calc(50% + clamp(73px,10vw,150px))!important;
+   right:auto!important;top:50%!important;
+   transform:translateY(-50%)!important;
+   width:clamp(35px,3.8vw,62px)!important;
+   height:clamp(35px,3.8vw,62px)!important;
+ }
+}
+@media (min-width:701px) and (max-width:1000px) {
+ .site-header.app .header-status {
+   max-width:clamp(140px,22vw,215px)!important;
+ }
+ .site-header.app .header-navigation {
+   width:clamp(171px,26vw,240px)!important;
+   max-width:100%!important;
+ }
+ .site-header.app .brand-home {width:clamp(120px,19vw,195px)!important;}
+ .site-header.app .brand-logo {max-height:36px!important;}
+ .site-header.app .brand-home small {font-size:clamp(.47rem,.85vw,.68rem)!important;}
+ .site-header.app #pageInstructionSpeaker {
+   left:calc(50% + clamp(65px,10vw,103px))!important;
+   width:clamp(32px,3.6vw,42px)!important;
+   height:clamp(32px,3.6vw,42px)!important;
+ }
+}
+
+
+/* numberedFamilyProgressReference20261019 */
+
+/* Three-stage numbered route, modeled after the supplied reference image. */
+#practicePage #familyLearningPath.learning-path {
+  --circle-size:clamp(28px, 4.8vw, 50px);
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(12px,1.02fr) minmax(0,1fr) minmax(12px,1.02fr) minmax(0,1fr);
+  align-items:start!important;
+  gap:0!important;
+  width:min(100%,700px)!important;
+  max-width:100%!important;
+  margin:clamp(5px,1vw,10px) auto clamp(8px,1.4vw,14px)!important;
+  padding:0 clamp(2px,.8vw,8px)!important;
+  background:none!important;border:0!important;box-shadow:none!important;
+}
+#familyLearningPath .learning-step {display:flex!important;flex-direction:column!important;min-width:0!important;gap:0!important;align-items:center!important;position:relative;z-index:1;}
+#familyLearningPath .learning-node {
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:var(--circle-size)!important;height:var(--circle-size)!important;
+  flex:none!important;border-radius:50%!important;
+  font-size:clamp(16px,2.7vw,28px)!important;font-weight:850!important;
+  line-height:1!important;color:white!important;
+  background:linear-gradient(145deg,#d6d6d8 1%,#999b9f 62%,#7d8188 100%)!important;
+  border:2px solid rgba(255,255,255,.9)!important;
+  box-shadow:inset 0 2px 4px #ffffff80, inset 0 -2px 3px #00000016,0 2px 4px #26354b22!important;
+}
+#familyLearningPath .learning-step.is-current .learning-node,
+#familyLearningPath .learning-step.is-complete .learning-node {
+  background:linear-gradient(145deg,#4cbaff 0%,#0879ed 45%,#0759ca 100%)!important;
+  box-shadow:inset 0 3px 5px #ffffff7d,inset 0 -3px 4px #063c9944,0 2px 5px #174d9950!important;
+  border-color:#c8eaff!important;
+}
+#familyLearningPath .learning-label {
+  box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;min-height:clamp(23px,3.2vw,38px)!important;
+  margin-top:-1px!important;padding:3px 3px!important;
+  border-radius:999px!important;white-space:nowrap!important;
+  font-size:clamp(9px,1.5vw,18px)!important;
+  line-height:1.08!important;font-weight:725!important;
+  color:#29446a!important;background:linear-gradient(130deg,#f2f2f4,#e9e9eb)!important;
+  text-shadow:0 1px 1px #ffffffb0!important;
+}
+#familyLearningPath .learning-step.is-current .learning-label,
+#familyLearningPath .learning-step.is-complete .learning-label {
+  color:#102e71!important;background:linear-gradient(115deg,#bceeff,#8edfff)!important;
+}
+#familyLearningPath .learning-chevron {
+  font-size:0!important;display:block!important;align-self:start!important;
+  height:clamp(4px,.7vw,8px)!important;width:calc(100% - 8px)!important;
+  margin:calc(var(--circle-size) / 2 - clamp(2px,.35vw,4px)) 4px 0!important;
+  border-radius:100px!important;
+  background:linear-gradient(#d0d0d2,#a9abae 60%,#d0d0d2)!important;
+  box-shadow:0 1px 3px #00000012!important;
+}
+#familyLearningPath[data-completed="1"] .learning-chevron:first-of-type,
+#familyLearningPath[data-completed="2"] .learning-chevron:first-of-type,
+#familyLearningPath[data-completed="3"] .learning-chevron,
+#familyLearningPath[data-completed="2"] .learning-chevron:nth-of-type(2) {background:linear-gradient(#79c3fc,#278df0 60%,#68b5fa)!important;}
+@media(max-width:420px){#practicePage #familyLearningPath.learning-path{--circle-size:clamp(24px,8vw,32px);width:min(98vw,430px)!important;padding:0 2px!important;}#familyLearningPath .learning-label{font-size:clamp(8px,2.8vw,11px)!important;min-height:24px!important;padding:2px 2px!important;}#familyLearningPath .learning-chevron{height:4px!important;}}
+
+
+/* unifiedFamilyWindow20261019 */
+
+/* On the Words screen, the navigation, progress tracker, and word cards form
+   one uninterrupted panel. All existing controls retain their DOM and handlers. */
+#practicePage:has(> #wordsPage:not([hidden])) > .page-heading {
+  background:linear-gradient(110deg,#eef5ff 0%,#fff9e9 100%)!important;
+  border:3px solid #d5e5ff!important;
+  border-bottom:0!important;
+  border-radius:clamp(22px,4vw,42px) clamp(22px,4vw,42px) 0 0!important;
+  box-shadow:none!important;
+  margin:8px 0 0!important;
+  padding:clamp(10px,2vw,23px) clamp(10px,2.5vw,27px) 7px!important;
+  box-sizing:border-box!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) > #wordsPage {
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) > #wordsPage > section.card {
+  background:linear-gradient(110deg,#eef5ff 0%,#fff9e9 100%)!important;
+  border:3px solid #d5e5ff!important;
+  border-top:0!important;
+  border-radius:0 0 clamp(22px,4vw,42px) clamp(22px,4vw,42px)!important;
+  box-shadow:0 12px 26px rgba(27,63,108,.10)!important;
+  margin:0!important;
+  padding:clamp(10px,1.6vw,21px) clamp(12px,2.6vw,30px) clamp(15px,2vw,26px)!important;
+  box-sizing:border-box!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) .new-family-bar {
+  padding:clamp(3px,1vw,11px) clamp(2px,1vw,10px) 4px!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) #familyLearningPath.learning-path {
+  margin:clamp(7px,1.1vw,12px) auto 0!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) #wordGrid {
+  margin:2px auto 0!important;
+  gap:clamp(8px,1.4vw,16px)!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) #wordGrid .word {
+  border-color:#aee4ff!important;
+  background:#fff!important;
+  box-shadow:0 4px 0 #bde7fb,0 5px 12px #2b6e9b12!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) #wordsPage .actions {
+  margin:clamp(13px,2vw,23px) 0 0!important;
+}
+/* Keep separate navigation elements hidden; they are still available to JS. */
+@media(max-width:600px){
+  #practicePage:has(> #wordsPage:not([hidden])) > .page-heading {padding:8px 7px 4px!important}
+  #practicePage:has(> #wordsPage:not([hidden])) > #wordsPage > section.card {padding:9px 9px 15px!important}
+  #practicePage:has(> #wordsPage:not([hidden])) .new-family-bar button {min-height:44px!important}
+}
+
+
+/* unifiedSentenceAndChallengeWindows20261019 */
+
+/* Extend the same single-window family layout from Words to Sentences and Family Challenge. */
+#practicePage:has(> #sentencesPage:not([hidden])) > .page-heading,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) > .page-heading {
+  background:linear-gradient(110deg,#eef5ff 0%,#fff9e9 100%)!important;
+  border:3px solid #d5e5ff!important;
+  border-bottom:0!important;
+  border-radius:clamp(22px,4vw,42px) clamp(22px,4vw,42px) 0 0!important;
+  box-shadow:none!important;
+  margin:8px 0 0!important;
+  padding:clamp(10px,2vw,23px) clamp(10px,2.5vw,27px) 7px!important;
+  box-sizing:border-box!important;
+}
+#practicePage:has(> #sentencesPage:not([hidden])) > #sentencesPage,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) > #familyGroupQuizPage {
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+}
+#practicePage:has(> #sentencesPage:not([hidden])) > #sentencesPage > section.card,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) > #familyGroupQuizPage > section.card {
+  background:linear-gradient(110deg,#eef5ff 0%,#fff9e9 100%)!important;
+  border:3px solid #d5e5ff!important;
+  border-top:0!important;
+  border-radius:0 0 clamp(22px,4vw,42px) clamp(22px,4vw,42px)!important;
+  box-shadow:0 12px 26px rgba(27,63,108,.10)!important;
+  margin:0!important;
+  padding:clamp(10px,1.6vw,21px) clamp(12px,2.6vw,30px) clamp(15px,2vw,26px)!important;
+  box-sizing:border-box!important;
+}
+#practicePage:has(> #sentencesPage:not([hidden])) .new-family-bar,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) .new-family-bar {
+  padding:clamp(3px,1vw,11px) clamp(2px,1vw,10px) 4px!important;
+}
+#practicePage:has(> #sentencesPage:not([hidden])) #familyLearningPath.learning-path,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) #familyLearningPath.learning-path {
+  margin:clamp(7px,1.1vw,12px) auto 0!important;
+}
+#practicePage:has(> #sentencesPage:not([hidden])) #sentenceGrid {
+  margin:2px auto 0!important;
+  gap:clamp(10px,1.6vw,18px)!important;
+}
+#practicePage:has(> #sentencesPage:not([hidden])) #sentenceGrid .sentence-button {
+  border-color:#1d56b0!important;
+  background:#fff!important;
+  box-shadow:0 4px 0 #d3e8ff,0 5px 12px #2b6e9b12!important;
+  min-height:84px!important;
+}
+#practicePage:has(> #sentencesPage:not([hidden])) #sentencesPage .actions,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) #familyGroupQuizPage .actions {
+  margin:clamp(13px,2vw,23px) 0 0!important;
+}
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) #familyWordQuiz {
+  min-height:0!important;
+}
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) #familyWordChoices {
+  margin:2px auto 0!important;
+  gap:clamp(10px,1.6vw,18px)!important;
+}
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) #familyWordChoices .quiz-choice {
+  border-color:#1d56b0!important;
+  background:#fff!important;
+  box-shadow:0 4px 0 #d3e8ff,0 5px 12px #2b6e9b12!important;
+}
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) #familyWordHear {
+  margin:clamp(14px,2vw,24px) auto 0!important;
+}
+@media(max-width:600px){
+  #practicePage:has(> #sentencesPage:not([hidden])) > .page-heading,
+  #practicePage:has(> #familyGroupQuizPage:not([hidden])) > .page-heading {padding:8px 7px 4px!important}
+  #practicePage:has(> #sentencesPage:not([hidden])) > #sentencesPage > section.card,
+  #practicePage:has(> #familyGroupQuizPage:not([hidden])) > #familyGroupQuizPage > section.card {padding:9px 9px 15px!important}
+  #practicePage:has(> #sentencesPage:not([hidden])) #sentenceGrid .sentence-button {min-height:72px!important;padding:14px!important;font-size:1.05rem!important}
+}
+
+
+/* triviaAndCompletionFix20261019 */
+
+/* The numbered Words/Sentences/Challenge tracker belongs only to a family activity.
+   Prevent its display:grid!important style from overriding the hidden attribute. */
+#practicePage #familyLearningPath.learning-path[hidden] { display:none!important; }
+/* The replacement art includes its own lettering and needs room in the modal. */
+#familyFinishDialog .family-finish-prize { width:min(64vw,280px);height:auto;max-height:min(38vh,280px);object-fit:contain; }
+
+
+/* headerFourBlueGradient20261019 */
+
+/* Keep navigation boxes blue gradient, but make the star box softer and more squircle-shaped. */
+.site-header.app .header-status .stars:not([hidden]) {
+  background:#fff9e2!important;
+  background-image:none!important;
+  background-repeat:no-repeat!important;
+  border-color:#eadfb1!important;
+  border-radius:clamp(22px,2vw,32px)!important;
+  box-shadow:0 5px 0 #e6debf!important;
+}
+@media (max-width:1200px){
+  .site-header.app .header-status .stars:not([hidden]) {
+    padding:4px 7px!important;
+    border-radius:20px!important;
+  }
+}
+@media (max-width:700px){
+  .site-header.app .header-status .stars:not([hidden]) {
+    min-height:34px!important;
+    padding:3px 6px!important;
+    gap:5px!important;
+    border-radius:17px!important;
+    box-shadow:0 4px 0 #e6debf!important;
+  }
+}
+@media (max-width:460px){
+  .site-header.app .header-status .stars:not([hidden]) {
+    min-height:32px!important;
+    padding:2px 5px!important;
+    gap:4px!important;
+    border-radius:15px!important;
+    box-shadow:0 3px 0 #e6debf!important;
+  }
+  .site-header.app .header-status .stars img {
+    width:22px!important;
+    height:22px!important;
+  }
+}
+.site-header.app .header-navigation > #parentSettingsButton,
+.site-header.app .header-navigation > #practiceUsers,
+.site-header.app .header-navigation > #layoutFamilies {
+  background-color:#d8eeff!important;
+  background-image:linear-gradient(180deg,#ffffff 0%,#f7fbff 18%,#e8f5ff 50%,#d1eaff 100%)!important;
+  background-repeat:no-repeat!important;
+}
+
+
+/* elari-brand-bigger-20261019 */
+
+/* Remove the subtitle under the main logo and enlarge the Elari WonderWorks wordmark ~30%. */
+.site-header.app .brand-home small{display:none!important;}
+.site-header.app .brand-home{
+  width:clamp(220px,29.25vw,439px)!important;
+  max-width:439px!important;
+}
+.site-header.app .brand-logo{
+  max-height:clamp(50px,5.125vw,80px)!important;
+}
+.site-header.app #pageInstructionSpeaker{
+  width:clamp(49px,5.32vw,87px)!important;
+  height:clamp(49px,5.32vw,87px)!important;
+}
+@media (max-width:1200px){
+  .site-header.app .brand-home{
+    width:clamp(244px,37.375vw,374px)!important;
+    max-width:374px!important;
+  }
+  .site-header.app .brand-logo{max-height:clamp(55px,6.5vw,74px)!important;}
+  .site-header.app #pageInstructionSpeaker{
+    left:calc(50% + clamp(138px,21vw,212px))!important;
+    width:clamp(52px,7vw,91px)!important;
+    height:clamp(52px,7vw,91px)!important;
+  }
+}
+@media (max-width:700px){
+  .site-header.app .brand-home{
+    width:min(90vw,300px)!important;
+    max-width:300px!important;
+  }
+  .site-header.app .brand-logo{max-height:60px!important;}
+  .site-header.app #pageInstructionSpeaker{
+    width:clamp(48px,11.2vw,60px)!important;
+    height:clamp(48px,11.2vw,60px)!important;
+    right:2px!important;
+  }
+}
+@media (min-width:701px) and (max-width:1000px) {
+  .site-header.app .brand-home{
+    width:clamp(195px,30.875vw,318px)!important;
+    max-width:318px!important;
+  }
+  .site-header.app .brand-logo{max-height:59px!important;}
+  .site-header.app #pageInstructionSpeaker{
+    left:calc(50% + clamp(116px,17.8vw,172px))!important;
+    width:clamp(45px,5.04vw,59px)!important;
+    height:clamp(45px,5.04vw,59px)!important;
+  }
+}
+
+
+/* footerReducedFoxAndCaption20261019 */
+
+/* Reduce the fox artwork by 30% on all layouts. */
+footer .footer-fox {width:77px!important;}
+@media(max-width:650px){footer .footer-fox{width:63px!important;}}
+/* Reduce only the dedication text by 25%. */
+footer.login-brand-footer > p,
+#learnerFooter {font-size:75%!important;}
+
+
+/* globalMeadowBackground20261019 */
+
+body{
+  background:#8fd8ff url("../images/backgrounds/meadow-background-exact.png") center center / 100% 100% no-repeat fixed !important;
+}
+.site-header.app,
+.app{
+  position:relative;
+}
+
+
+/* outerYellowBorders20261019 */
+
+/* Thick yellowish borders for the large outer content boxes only. */
+#homePage{
+  border:6px solid #FFF2A8!important;
+}
+#allWordsPage > .card{
+  border:6px solid #FFF2A8!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) > .page-heading,
+#practicePage:has(> #sentencesPage:not([hidden])) > .page-heading,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) > .page-heading{
+  border:6px solid #FFF2A8!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) > #wordsPage > section.card,
+#practicePage:has(> #sentencesPage:not([hidden])) > #sentencesPage > section.card,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) > #familyGroupQuizPage > section.card{
+  border:6px solid #FFF2A8!important;
+}
+/* keep the split unified family panel looking continuous */
+#practicePage:has(> #wordsPage:not([hidden])) > .page-heading,
+#practicePage:has(> #sentencesPage:not([hidden])) > .page-heading,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) > .page-heading{
+  border-bottom-width:0!important;
+}
+#practicePage:has(> #wordsPage:not([hidden])) > #wordsPage > section.card,
+#practicePage:has(> #sentencesPage:not([hidden])) > #sentencesPage > section.card,
+#practicePage:has(> #familyGroupQuizPage:not([hidden])) > #familyGroupQuizPage > section.card{
+  border-top-width:0!important;
+}
+
+
+/* smallerBlueFamilyNavigation20261019 */
+
+/* Compact previous/next family buttons matching the current Words progress pill. */
+#practicePage .new-family-bar .family-prev,
+#practicePage .new-family-bar .family-next {
+  width:78%!important;
+  max-width:225px!important;
+  min-width:0!important;
+  min-height:clamp(40px,4vw,52px)!important;
+  height:auto!important;
+  padding:7px clamp(4px,.9vw,12px)!important;
+  background:#a4e6fb!important;
+  background-image:linear-gradient(115deg,#bceeff,#8edfff)!important;
+  border:2px solid #9bdbf5!important;
+  border-radius:clamp(13px,1.3vw,20px)!important;
+  box-shadow:0 3px 7px #216c9a21!important;
+  font-size:clamp(.84rem,1.45vw,1.16rem)!important;
+  line-height:1.18!important;
+  color:#184a9d!important;
+}
+#practicePage .new-family-bar .family-prev{justify-self:start!important;}
+#practicePage .new-family-bar .family-next{justify-self:end!important;}
+@media(max-width:600px){
+  #practicePage .new-family-bar .family-prev,
+  #practicePage .new-family-bar .family-next{
+    width:94%!important;
+    min-height:38px!important;
+    padding:5px 3px!important;
+    font-size:clamp(.72rem,2.7vw,.94rem)!important;
+  }
+}
+
+
+/* Additional styles */
+
+#practicePage .centered-heading #layoutProgress {
+    position: absolute !important;
+    right: 40px !important;
+    top: 0 !important;
+    margin: 0 !important;
+}
+
+
+/* triviaQuestionCountInsidePanel20261019 */
+
+/* Player Trivia: remove the separate strip, as marked in the screenshot. */
+#practicePage:has(> #allWordsPage:not([hidden]) #quizPanel:not([hidden]) #quizRound:not([hidden])) > .page-heading {display:none!important;}
+/* Align the question number within the main bordered panel, like the family count. */
+#practicePage:has(> #allWordsPage:not([hidden]) #quizPanel:not([hidden]) #quizRound:not([hidden])) #allWordsPage > .card {
+  padding-top:clamp(47px,5vw,70px)!important;
+}
+#triviaQuestionCount {
+  display:none;
+  position:absolute;
+  top:clamp(10px,1.4vw,18px);
+  right:40px;
+  margin:0;
+  color:#516078;
+  font-size:clamp(.85rem,1.6vw,1.1rem);
+  font-weight:800;
+  line-height:1.2;
+  z-index:2;
+  white-space:nowrap;
+}
+#practicePage:has(> #allWordsPage:not([hidden]) #quizPanel:not([hidden]) #quizRound:not([hidden])) #triviaQuestionCount {display:block;}
+#practicePage:has(#browsePanel:not([hidden])) #triviaQuestionCount {display:none!important;}
+@media(max-width:600px){#triviaQuestionCount{right:16px;}}
+
+
+/* removeHomeInnerBorder20261019 */
+
+/* Keep the outer yellow home border; remove only the inner kid-home outline. */
+#homePage > .kid-home {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* macOS/iOS/iPadOS: pin meadow artwork to the visible viewport rather than
+   the scrollable page. Mobile WebKit does not reliably honor `fixed` on body. */
+html { background-color: #8fd8ff !important; }
+body {
+  background: transparent !important;
+  isolation: isolate;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: #8fd8ff url("../images/backgrounds/meadow-background-exact.png") center center / 100% 100% no-repeat;
+}
+
+/* On iPad/iPhone the native UIImageView supplies the stationary meadow. */
+html.elari-native-background, html.elari-native-background body { background: transparent !important; }
+html.elari-native-background body::before { display: none !important; }
+
+/* Full artwork buttons supplied for the login screens. */
+#startPage #continuePractice, #startPage #createNewUser,
+#startPage #deleteUser, #startPage #cancelNewUser,
+#startPage #nameForm button[type="submit"] {
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;height:90px!important;min-height:76px!important;
+ padding:0!important;background:transparent!important;border:0!important;
+ border-radius:0!important;box-shadow:none!important;
+}
+#startPage img.login-button-art {
+ display:block!important;width:auto!important;max-width:90%!important;
+ height:auto!important;max-height:54px!important;object-fit:contain!important;
+ flex:0 1 auto!important;margin:auto!important;
+ transform:scale(1.4,1.2)!important;transform-origin:center center!important;
+}
+#startPage button:disabled img.login-button-art {opacity:.5;}
+#startPage button:focus-visible {outline:3px solid #225ac4!important;outline-offset:3px!important;}
+
+/* Enlarge the three navigation icons by 25%, preserving their layout. */
+#parentSettingsButton .header-nav-icon,
+#practiceUsers .header-nav-icon,
+#layoutFamilies .header-nav-icon {
+ transform:scale(1.25)!important;
+ transform-origin:center center!important;
+}
+
+/* Keep the Info speaker immediately left of Parent Settings. */
+.site-header.app .header-navigation {position:relative!important;}
+.site-header.app .header-navigation #pageInstructionSpeaker {
+ position:absolute!important;left:auto!important;right:calc(100% + 12px)!important;
+ top:50%!important;bottom:auto!important;transform:translateY(-50%)!important;
+ min-height:0!important;padding:0!important;margin:0!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ width:clamp(49px,5.32vw,87px)!important;height:clamp(49px,5.32vw,87px)!important;
+}
+@media(max-width:700px){
+ .site-header.app .header-navigation #pageInstructionSpeaker {
+ right:calc(100% + 6px)!important;width:42px!important;height:42px!important;
+ }
+}
+
+/* Family activities keep the family count left and challenge question right. */
+#practicePage .centered-heading.family-activity-heading #layoutProgress{
+  left:40px!important;right:auto!important;text-align:left!important;
+}
+#practicePage .centered-heading #familyQuestionProgress{
+  position:absolute;right:40px;top:0;margin:0;color:#516078;
+  font-size:.85rem;font-weight:800;line-height:1.2;text-align:right;
+}
+#familyQuestionProgress[hidden]{display:none!important;}
+@media(max-width:600px){
+  #practicePage .centered-heading.family-activity-heading #layoutProgress{left:12px!important;font-size:.75rem!important;}
+  #practicePage .centered-heading #familyQuestionProgress{right:12px;font-size:.75rem;}
+}
+
+/* Player Challenge mode picker and readable full-sentence answer rows. */
+.challenge-mode-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:850px;margin:24px auto;}
+.challenge-mode-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:30px 18px;border:3px solid #95b6e5;border-radius:24px;background:#edf4ff;color:#194a9c;cursor:pointer;font:inherit;min-height:240px;box-shadow:0 5px 0 #c6d8f1;}
+.challenge-mode-card>span{font-size:3.2rem;}.challenge-mode-card strong{font-size:clamp(1.2rem,3vw,2rem);}.challenge-mode-card small{font-size:clamp(.9rem,1.5vw,1.1rem);}
+#chooseSentenceChallenge{background:#eff9ee;border-color:#9cca99;color:#28633a;box-shadow:0 5px 0 #cbe4c8;}
+.challenge-mode-card:hover{filter:brightness(1.03);}.challenge-mode-card:focus-visible{outline:4px solid #efb324;outline-offset:4px;}
+#changeChallengeMode{display:block;margin:8px auto 18px;}
+#changeChallengeMode[hidden],#startQuiz[hidden],#quizHistory[hidden]{display:none!important;}
+#quizPanel.sentence-challenge #quizChoices{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:14px;max-width:1000px;margin:20px auto;}
+#quizPanel.sentence-challenge #quizChoices .quiz-choice{width:100%;min-width:0;min-height:80px;height:auto!important;white-space:normal;overflow-wrap:break-word;padding:18px 22px!important;font-size:clamp(1.25rem,3vw,2.3rem)!important;line-height:1.35;text-align:left;}
+#sentenceChallengeRecord{border-top:2px solid #dce7f4;margin-top:22px;padding-top:12px;}
+@media(max-width:540px){.challenge-mode-choices{grid-template-columns:1fr;gap:14px;margin:16px auto;}.challenge-mode-card{min-height:170px;padding:18px 12px;gap:8px;}#quizPanel.sentence-challenge #quizChoices .quiz-choice{padding:14px!important;min-height:70px;}}
+
+/* Image-only Player Challenge selection. */
+#quizSetup .challenge-mode-choices{max-width:1100px;gap:clamp(16px,3vw,36px);margin:16px auto;align-items:center;}
+#quizSetup .challenge-mode-card,#quizSetup #chooseSentenceChallenge{display:block;width:100%;min-width:0;min-height:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;cursor:pointer;}
+#quizSetup .challenge-mode-card img{display:block;width:100%;height:auto;object-fit:contain;}
+#quizSetup .challenge-mode-card:focus-visible{outline:4px solid #efb324;outline-offset:5px;border-radius:20px;}
+#quizSetupMessage:empty{display:none;}
+/* Match the family navigation's rounded cyan buttons. */
+#quizPanel #changeChallengeMode{width:min(100%,330px)!important;min-height:66px!important;padding:12px 22px!important;margin:8px auto 22px!important;border:2px solid #edc653!important;border-radius:18px!important;background:linear-gradient(135deg,#fffbe0,#fff2ad)!important;box-shadow:0 3px 10px #b2871420!important;font-weight:900!important;font-size:clamp(1rem,2vw,1.35rem)!important;line-height:1.2!important;}
+#changeChallengeMode .challenge-switch-label{color:#194a9c;}
+#quizPanel #changeChallengeMode:focus-visible{outline:4px solid #f6bf3a;outline-offset:3px;}
+#quizPanel #changeChallengeMode[hidden]{display:none!important;}
+@media(max-width:540px){#quizSetup .challenge-mode-choices{gap:20px;max-width:440px;}#quizPanel #changeChallengeMode{min-height:52px!important;}}
+
+/* Separate challenge cards match Continue Learning's gold border. */
+#quizSetup .challenge-mode-card,#quizSetup #chooseSentenceChallenge{
+  box-sizing:border-box;
+  padding:clamp(12px,2vw,24px);
+  border:4px solid #edac06;
+  border-radius:24px;
+  background:linear-gradient(135deg,#fffbe0,#fff4a9);
+  box-shadow:0 0 0 4px #fff0a1,0 7px 16px rgba(186,132,0,.25);
+}
+
+/* Match challenge switches and word-list navigation to family-page buttons. */
+#quizPanel #changeChallengeMode,
+#browseResults .browse-family-navigation button {
+  background:#a4e6fb!important;
+  background-image:linear-gradient(115deg,#bceeff,#8edfff)!important;
+  border:2px solid #9bdbf5!important;
+  border-radius:clamp(13px,1.3vw,20px)!important;
+  box-shadow:0 3px 7px #216c9a21!important;
+  color:#184a9d!important;
+  font-weight:900!important;
+}
+#quizPanel #changeChallengeMode .challenge-switch-label {color:#184a9d!important;}
+#browseResults .browse-family-navigation {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;
+  align-items:center;margin:8px 0 22px;
+}
+#browseResults .browse-family-navigation button {
+  width:100%;min-width:0;min-height:52px;padding:10px 8px;
+  font-size:clamp(.85rem,2vw,1.35rem);line-height:1.2;
+}
+@media(max-width:540px){#browseResults .browse-family-navigation{gap:6px;}}
+
+/* Keep arrows blue while marking family labels in curriculum red. */
+#browseResults .browse-family-navigation button .family-label,
+#quizPanel.sentence-challenge .quiz-choice .family-label {color:#c62828!important;}

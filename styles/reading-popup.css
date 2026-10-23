@@ -1,0 +1,91 @@
+/* Phase 2: ordered combination of runtime-01-sentence-pyramid-tight-spacing.css and runtime-02-silent-elesson-styles.css. */
+
+/* Keep the sentence-building pyramid compact without changing its text size. */
+#wordReadDialog .read-sentence:has(.sentence-build-line) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  gap: 3px !important;
+  line-height: 1.1 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 4px auto 8px !important;
+  padding: 0 !important;
+}
+#wordReadDialog .read-sentence .sentence-build-line {
+  text-align: left !important;
+  align-self: flex-start !important;
+  box-sizing: border-box;
+  height: auto !important;
+  min-height: 0 !important;
+  line-height: 1.1 !important;
+  margin: 0 !important;
+  padding: 2px 8px !important;
+}
+
+/* Simplified parent results */
+#parentUsageSection{margin:0 0 18px}
+#parentUsageSection>h3{margin:8px 0 12px;font-size:1.4rem}
+.parent-player-label{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-weight:700;margin-bottom:14px}
+.parent-player-label select{max-width:250px;min-width:140px;padding:8px;border-radius:10px}
+.parent-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+.parent-stat-tile{background:#eef4ff;border:1px solid #d5e2f5;border-radius:14px;padding:14px 10px;display:flex;flex-direction:column;gap:5px;text-align:center}
+.parent-stat-tile strong{color:#183d77;font-size:1.55rem;line-height:1.15}
+.parent-stat-tile span{font-size:.84rem;color:#385170;font-weight:650}
+.parent-overview-note{font-size:.8rem;color:#52647b;margin:8px 0 14px}
+.parent-report-panel{border:1px solid #cfdbeb;border-radius:12px;margin:10px 0;background:#fff;padding:0 12px 12px;overflow-x:auto}
+.parent-report-panel>summary{font-size:1.05rem;font-weight:800;cursor:pointer;padding:14px 4px;color:#1c3d6c;list-style:revert}
+.parent-report-panel:not([open]){padding-bottom:0}
+.parent-report-panel table{width:100%;font-size:.84rem}
+.parent-report-panel th,.parent-report-panel td{padding:7px 5px}
+.parent-report-panel #finalChallengeRecord{margin:0;padding:0;border:0;box-shadow:none}
+@media(min-width:600px){.parent-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+
+
+
+.silent-e-rule-button{display:block;width:41.625%;max-width:266.4px;height:auto;min-height:0;margin:0 auto 0;padding:0;border:0;background:transparent;cursor:pointer;box-shadow:none}
+.silent-e-rule-button img{display:block;width:100%;height:auto;border:0}
+.silent-e-rule-button:hover{filter:brightness(1.03)}.silent-e-rule-button:active{transform:translateY(2px)}
+#silentEDialog{box-sizing:border-box;width:min(95vw,900px);max-height:88dvh;overflow:auto;border:0;border-radius:32px;padding:clamp(20px,3vw,36px);background:#fff;color:#172d50;box-shadow:0 16px 55px #11213f55;text-align:center}
+#silentEDialog::backdrop{background:rgba(17,33,63,.62)}
+.silent-e-head{margin:0 0 14px}.silent-e-head h2{font-size:clamp(2.4rem,6vw,4.4rem);color:#1680f4;margin:0;font-weight:900;line-height:1.15}
+.silent-e-sparkle{color:#ffcc28}
+.silent-e-subtitle{font-size:clamp(1.05rem,2.65vw,1.8rem);color:#526076;font-weight:800;margin:14px 0 22px;line-height:1.35}
+.silent-e-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:0}
+.silent-e-pair{min-width:0;background:#f7faff;border:3px solid #bde2fc;border-radius:26px;min-height:148px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px 10px;box-shadow:none;cursor:pointer;color:#172d50;font:inherit}
+.silent-e-pair:hover{background:#eff8ff;border-color:#7fc7fb}.silent-e-pair:focus-visible{outline:4px solid #ffcb3c;outline-offset:2px}
+.silent-e-pair .silent-e-label{font-size:clamp(1rem,2.3vw,1.65rem);font-weight:900}
+.silent-e-short{color:#139d36}.silent-e-long{color:#ed1828}
+.silent-e-pair .silent-e-word{white-space:nowrap;display:block;font-size:clamp(2.5rem,6vw,4.7rem);font-weight:900;line-height:1.2;color:#172d50;letter-spacing:-.025em}
+.silent-e-green{color:#139d36}.silent-e-red{color:#ed1828}
+.silent-e-footnote{font-size:clamp(1rem,2.4vw,1.65rem);font-weight:700;color:#526076;line-height:1.4;margin:24px 0 0}
+@media(max-width:480px){#silentEDialog{padding:20px 12px;border-radius:25px}.silent-e-pairs{gap:9px}.silent-e-pair{min-height:116px;padding:10px 4px;gap:5px;border-width:2px}.silent-e-pair .silent-e-word{font-size:clamp(2rem,8vw,3rem)}.silent-e-subtitle{margin:12px 0 16px}.silent-e-footnote{margin-top:16px}}
+
+
+
+/* Silent E popup restyled to match the Alphabet popup colors and controls. */
+#silentEDialog{box-sizing:border-box;width:min(92vw,740px);max-height:90dvh;overflow:auto;padding:24px;border:4px solid #e9b536;border-radius:28px;background:linear-gradient(145deg,#fffcec,#fff3c7);color:#203a60;box-shadow:0 20px 60px #203a6044;text-align:center}
+#silentEDialog::backdrop{background:#16304d88}
+#silentEDialog button{cursor:pointer;font-family:inherit}
+.silent-e-head{margin:0 0 10px}
+.silent-e-head h2{font-size:clamp(2.4rem,6vw,4.2rem);color:#184a9d;margin:0;font-weight:900;line-height:1.12}
+.silent-e-subtitle{font-size:clamp(1.05rem,2.65vw,1.6rem);color:#526076;font-weight:800;margin:10px 0 18px;line-height:1.35}
+.silent-e-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0}
+.silent-e-pair{min-width:0;background:#ffffffb8;border:2px solid #c5ddf3;border-radius:22px;min-height:116px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:10px 8px;box-shadow:none;cursor:pointer;color:#172d50;font:inherit}
+.silent-e-pair:hover{background:#f4fbff;border-color:#7fc7fb}.silent-e-pair:focus-visible{outline:4px solid #ffcb3c;outline-offset:2px}
+.silent-e-pair .silent-e-label{font-size:clamp(.95rem,2vw,1.35rem);font-weight:900}
+.silent-e-pair .silent-e-word{white-space:nowrap;display:block;font-size:clamp(2rem,4.8vw,3.25rem);font-weight:900;line-height:1.15;color:#172d50;letter-spacing:-.025em}
+.silent-e-short{color:#139d36}.silent-e-long{color:#ed1828}.silent-e-green{color:#139d36}.silent-e-red{color:#ed1828}
+#silentEDialog .silent-e-audio-actions{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,28px);margin:16px 0 2px}
+#silentEDialog .silent-e-audio-actions button{display:block;flex:0 0 auto;width:clamp(48px,8vw,68px)!important;min-width:44px!important;min-height:44px!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;line-height:0}
+#silentEDialog .silent-e-audio-actions img{display:block;width:100%!important;height:auto!important;object-fit:contain}
+@media(max-width:480px){#silentEDialog{padding:20px 12px;border-radius:25px}.silent-e-pairs{gap:9px}.silent-e-pair{min-height:96px;padding:8px 4px;gap:4px;border-width:2px}.silent-e-pair .silent-e-word{font-size:clamp(1.7rem,8vw,2.5rem)}.silent-e-subtitle{margin:10px 0 14px}}
+
+/* Subtitle removed: compact the Silent E lesson layout. */
+#silentEDialog .silent-e-head{margin-bottom:12px}
+#silentEDialog .silent-e-pairs{margin-top:0}
+#silentEDialog .silent-e-audio-actions{margin-top:12px;margin-bottom:0}

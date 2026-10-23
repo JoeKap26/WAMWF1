@@ -1,0 +1,51 @@
+/* Completed-family count first, learner name immediately after it. */
+.site-header.app .header-status {
+ display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+ align-items:center!important;justify-content:flex-start!important;gap:10px!important;
+ padding-left:0!important;margin-left:0!important;justify-self:start!important;
+}
+.site-header.app .header-status .stars {order:0!important;flex:0 0 auto!important;white-space:nowrap!important;}
+.site-header.app .header-status .learner-title {order:1!important;min-width:0!important;}
+@media(min-width:701px){.site-header.app .header-status{position:absolute!important;left:8px!important;top:50%!important;transform:translateY(-50%)!important;}}
+
+#headerStatus{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:12px!important;}
+#headerStatus>.stars{order:0!important;position:static!important;grid-column:auto!important;grid-row:auto!important;transform:none!important;margin:0!important;}
+#headerStatus>#learnerTitle{order:1!important;position:static!important;grid-column:auto!important;grid-row:auto!important;transform:none!important;margin:0!important;}
+
+#kidContinueProgress,#kidContinue small{display:none!important}
+
+#parentSettings .parent-dialog-heading h2{font-size:clamp(1.2rem,4.8vw,2.4rem)!important;line-height:1.15!important}
+
+#parentSettings #finalChallengeRecord{display:none!important}#parentSettings .parent-challenge-stat{margin:12px 0;font-weight:400}#parentSettings .parent-challenge-stat strong{font-weight:800}
+
+.site-header .stars .level-label{font-size:clamp(.675rem,1.65vw,1.05rem)!important;color:#194a9c!important;font-weight:800;line-height:1.1}
+
+.site-header .stars #levelCount{color:#194a9c!important}
+
+#parentPinDialog{width:min(360px,calc(100vw - 48px));box-sizing:border-box;border:3px solid #194a9c;border-radius:22px;padding:24px;background:#fff;color:#17345b}
+#parentPinDialog::backdrop{background:rgba(10,25,50,.6)}
+#parentPinForm{display:grid;gap:16px}#parentPinTitle{margin:0;text-align:center}
+#parentPinInput{box-sizing:border-box;width:100%;min-width:0;padding:12px;border:2px solid #194a9c;border-radius:10px;font-size:24px;text-align:center;letter-spacing:6px}
+#parentPinError{min-height:1.4em;margin:0;color:#b42318;font-size:16px}
+.parent-pin-actions{display:flex;gap:12px}.parent-pin-actions button{flex:1;min-height:48px;border-radius:12px;border:2px solid #194a9c;padding:10px;font:inherit;cursor:pointer}.parent-pin-actions button[type=submit]{background:#194a9c;color:white}
+
+/* Keep the parent PIN prompt independent of the large learning-screen text. */
+#parentPinDialog {
+  width: min(440px, calc(100vw - 32px)) !important;
+  max-width: calc(100vw - 32px) !important;
+  max-height: calc(100dvh - 32px) !important;
+  box-sizing: border-box !important;
+  margin: auto !important;
+  padding: clamp(20px, 4vw, 30px) !important;
+  overflow: auto !important;
+  font-size: 18px !important;
+  line-height: 1.4 !important;
+}
+#parentPinDialog *, #parentPinDialog *::before, #parentPinDialog *::after {box-sizing: border-box !important;}
+#parentPinDialog #parentPinForm {display:grid !important;gap:16px !important;width:100% !important;min-width:0 !important;margin:0 !important;}
+#parentPinDialog #parentPinTitle {font-size:clamp(24px, 5vw, 32px) !important;line-height:1.2 !important;letter-spacing:normal !important;margin:0 0 4px !important;text-align:center !important;overflow-wrap:normal !important;}
+#parentPinDialog label {font-size:18px !important;line-height:1.4 !important;margin:0 !important;}
+#parentPinDialog #parentPinInput {font-size:24px !important;line-height:1.3 !important;width:100% !important;min-width:0 !important;height:56px !important;padding:10px !important;letter-spacing:6px !important;}
+#parentPinDialog #parentPinError {font-size:16px !important;line-height:1.35 !important;min-height:22px !important;margin:0 !important;}
+#parentPinDialog .parent-pin-actions {display:flex !important;gap:12px !important;width:100% !important;}
+#parentPinDialog .parent-pin-actions button {flex:1 1 0 !important;min-width:0 !important;width:auto !important;height:auto !important;min-height:48px !important;padding:10px 12px !important;font-size:18px !important;line-height:1.3 !important;letter-spacing:normal !important;margin:0 !important;}
