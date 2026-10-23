@@ -28,8 +28,10 @@
     if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dlg.close();
   });
   dlg.addEventListener('close',stopAudio);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAudio();});
+  window.addEventListener('pagehide',stopAudio);
   function launch(){
-    window.wordFamiliesAudio?.stop();window.wordFamiliesAudio?.stop();stopAudio();dlg.showModal();
+    window.wordFamiliesAudio?.stop();stopAudio();dlg.showModal();
     playFile('audio/rules/silente.mp3');
   }
   const button=document.createElement('button');button.type='button';button.className='silent-e-rule-button';

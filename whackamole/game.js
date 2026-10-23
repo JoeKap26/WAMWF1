@@ -173,10 +173,13 @@
     function clockTick() {
         const ms = elapsedMs + (clockStarted ? Date.now() - clockStarted: 0);
         const seconds = Math.floor(ms / 1000);
-        clockDisplay.textContent = String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds%60).padStart(2, '0');
+        const text = String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds%60).padStart(2, '0');
+        if (clockDisplay.textContent !== text) clockDisplay.textContent = text;
         updateHammerCountdown();
     }
     function clockPause() {
+        clearInterval(clockInterval);
+        clockInterval = null;
         if (clockStarted) {
             elapsedMs += Date.now() - clockStarted;
             clockStarted = 0;
@@ -184,7 +187,9 @@
         clockTick();
     }
     function clockStart() {
+        if (isPaused()) return;
         if (!clockStarted)clockStarted = Date.now();
+        if (clockInterval === null) clockInterval = setInterval(clockTick, 250);
         clockTick();
     }
     function cooldownActive() {
@@ -1025,6 +1030,5 @@ b.style.setProperty('--letter-y', `${y}%`);
         else resumeGame('hidden');
     });
     window.addEventListener('pagehide', () => { clockPause(); saveWhackProgress(); });
-    clockInterval = setInterval(clockTick, 250);
     restart();
 })();

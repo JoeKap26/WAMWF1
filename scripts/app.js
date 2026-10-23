@@ -1659,8 +1659,8 @@ function popupPlayFile(path, onDone, onError, rate = AUDIO_PLAYBACK_SPEED, onPro
         saveProgress();
       }
 
-      document.querySelector('#previous').addEventListener('click', () => { index -= 1; render(); });
-      document.querySelector('#next').addEventListener('click', () => { index += 1; render(); });
+      document.querySelector('#previous').addEventListener('click', () => { index -= 1; render(); syncLayout(); });
+      document.querySelector('#next').addEventListener('click', () => { index += 1; render(); syncLayout(); });
       document.querySelector('#familyBack').addEventListener('click', () => { saveProgress(); showFamilySelection(true); });
       const familyExampleRecordings={"-ake": "ake, like bake", "-et": "et, like get", "-ine": "ine, like dine", "-un": "un, like bun", "-ub": "ub, like cub", "-ob": "ob, like cob", "-it": "it, like bit", "-am": "am, like ham", "-ay": "ay, like day", "-en": "en, like den", "-ip": "ip, like dip", "-ang": "ang, like bang", "-ot": "ot, like spot", "-amp": "amp, like camp", "-est": "est, like best", "-in": "in, like bin", "-im": "im, like dim", "-ee": "ee, like bee", "-ag": "ag, like bag", "-um": "um, like gum", "-ack": "ack, like back", "-and": "and, like band", "-ut": "ut, like but", "-ump": "ump, like bump", "-eep": "eep, like beep", "-ad": "ad, like bad", "-og": "og, like dog", "-an": "an, like can", "-uck": "uck, like duck", "-ame": "ame, like came", "-ick": "ick, like kick", "-ug": "ug, like bug", "-ank": "ank, like bank", "-ell": "ell, like bell", "-all": "all, like ball", "-ill": "ill, like bill", "-ide": "ide, like hide", "-ed": "ed, like bed", "-ock": "ock, like dock", "-op": "op, like hop", "-ap": "ap, like cap", "-ink": "ink, like pink", "-ing": "ing, like king", "-ig": "ig, like big", "-ent": "ent, like bent", "-ate": "ate, like date", "-ash": "ash, like cash", "-id": "id, like bid", "-at": "at, like cat", "-eed": "eed, like feed"};
       document.querySelector('#familySound').addEventListener('click', () => {

@@ -16,6 +16,8 @@ const letterLinks=Array.from({length:26},(_,letterIndex)=>{
 });
 const pair=i=>String.fromCharCode(65+i)+String.fromCharCode(97+i);
 function stop(){if(audio){audio.pause();audio.currentTime=0;audio=null;}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+window.addEventListener('pagehide',stop);
 function play(){stop();audio=new Audio('audio/alphabet/'+String.fromCharCode(97+index)+'.mp3');audio.play().catch(()=>{});}
 function playSong(){stop();window.wordFamiliesAudio?.stop();audio=new Audio('audio/songs/theAlphabet.mp3');audio.play().catch(()=>{});}
 function render(){letterLinks.forEach((link,i)=>{link.setAttribute('aria-pressed',String(i===index));});letters.textContent=pair(index);letters.setAttribute('aria-label','Listen to '+pair(index));picture.querySelector('img').src='images/alphabet/'+words[index]+'.png';picture.querySelector('img').alt=words[index];picture.querySelector('span').textContent=words[index];picture.setAttribute('aria-label','Listen: '+words[index]);prev.disabled=index===0;next.disabled=index===25;prev.innerHTML=index>0?'← <span class="alphabet-nav-letter">'+pair(index-1)+'</span>':'←';next.innerHTML=index<25?'<span class="alphabet-nav-letter">'+pair(index+1)+'</span> →':'→';}
