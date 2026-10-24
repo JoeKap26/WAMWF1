@@ -1,0 +1,50 @@
+/* Compact phone layout; tablet and desktop styles remain in their existing files. */
+@media (max-width:600px) {
+ body .app {width:100%!important;max-width:100%!important;box-sizing:border-box!important;min-width:0!important;}
+ body .site-header.app {display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto auto!important;gap:8px!important;padding:8px 10px 12px!important;margin:0!important;min-height:0!important;height:auto!important;}
+ body .site-header.app .brand-home {position:static!important;grid-column:1!important;grid-row:1!important;transform:none!important;justify-content:center!important;width:100%!important;min-height:0!important;padding:0!important;margin:0!important;}
+ body .site-header.app .brand-wordmark {width:100%!important;min-width:0!important;}
+ body .site-header.app .brand-logo {display:block!important;width:auto!important;max-width:85%!important;height:48px!important;max-height:48px!important;object-fit:contain!important;margin:auto!important;}
+ body .site-header.app #headerStatus {position:static!important;grid-column:1!important;grid-row:2!important;transform:none!important;min-height:0!important;padding:0!important;gap:10px!important;}
+ body .site-header.app #headerStatus .stars:not([hidden]) {padding:4px 8px!important;font-size:13px!important;min-height:0!important;}
+ body .site-header.app #headerStatus #learnerTitle:not([hidden]) {font-size:18px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;}
+ body .site-header.app .header-navigation {position:relative!important;grid-column:1!important;grid-row:3!important;display:grid!important;grid-template-columns:44px repeat(3,minmax(0,1fr))!important;gap:5px!important;width:100%!important;margin:0!important;padding:0!important;}
+ body .site-header.app .header-navigation > button {min-width:0!important;min-height:44px!important;padding:4px 2px!important;font-size:11px!important;line-height:1.15!important;}
+ body .site-header.app .header-navigation .header-nav-icon {width:18px!important;height:18px!important;}
+ body .site-header.app #pageInstructionSpeaker {position:static!important;inset:auto!important;transform:none!important;width:44px!important;height:44px!important;min-height:44px!important;margin:0!important;padding:0!important;}
+ body .site-header.app #pageInstructionSpeaker img {width:100%!important;height:100%!important;object-fit:contain!important;}
+ body #startPage,body #practicePage {padding:6px 10px 20px!important;margin:0 auto!important;}
+ body #startPage .start-card {padding:14px!important;margin:0!important;min-height:0!important;}
+ body #startPage .welcome-children {width:140px!important;height:auto!important;max-height:125px!important;object-fit:contain!important;margin:0 auto 8px!important;}
+ body #startPage .name-label {font-size:21px!important;margin:6px 0!important;}
+ body #startPage :is(.name-input,#previousUser) {height:48px!important;min-height:48px!important;font-size:20px!important;padding:8px 12px!important;box-sizing:border-box!important;}
+ body #startPage :is(.start-button,.new-user-button) {min-height:48px!important;padding:5px 10px!important;margin-top:12px!important;}
+ body #startPage .login-button-art {height:auto!important;width:100%!important;max-height:54px!important;object-fit:contain!important;}
+ body #homePage {padding:12px!important;min-height:0!important;}
+ body #homePage .kid-home-cards-updated {gap:12px!important;}
+ body #homePage .kid-home-cards-updated > :is(#kidContinue,#kidChallenge) {padding:8px!important;gap:6px!important;height:auto!important;}
+ body #homePage .kid-home-cards-updated > #kidContinue img {height:90px!important;}
+ body #homePage .kid-home-cards-updated > #kidChallenge img {height:58px!important;}
+ body #homePage .home-action-progress {height:12px!important;}
+ body #homePage .kid-home-cards-updated > :is(#kidWhack,#kidLearn,#kidCompleted) {padding:3px!important;min-width:0!important;height:94px!important;}
+ body #homePage .kid-home-cards-updated > :is(#kidWhack,#kidLearn,#kidCompleted) img {width:100%!important;height:100%!important;object-fit:contain!important;}
+ body #practicePage > .page-heading {width:100%!important;max-width:100%!important;box-sizing:border-box!important;min-width:0!important;}
+ body #practicePage > .page-heading > div {min-width:0!important;width:100%!important;}
+ body #practicePage .new-family-bar {width:100%!important;box-sizing:border-box!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;padding:4px!important;}
+ body #practicePage .new-family-bar .family-audio-title {grid-column:1/-1!important;grid-row:1!important;font-size:27px!important;min-height:44px!important;width:100%!important;}
+ body #practicePage .new-family-bar :is(.family-prev,.family-next) {position:static!important;width:100%!important;max-width:100%!important;min-width:0!important;min-height:44px!important;grid-row:2!important;}
+ body #practicePage .new-family-bar .family-prev {grid-column:1!important;}
+ body #practicePage .new-family-bar .family-next {grid-column:2!important;}
+ body #practicePage #familyLearningPath.learning-path {width:100%!important;max-width:100%!important;box-sizing:border-box!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:4px!important;padding:8px 0!important;margin:0!important;}
+ body #familyLearningPath .learning-chevron {display:none!important;}
+ body #familyLearningPath .learning-step {min-width:0!important;width:100%!important;}
+ body #familyLearningPath .learning-label {font-size:12px!important;min-width:0!important;width:100%!important;box-sizing:border-box!important;padding:4px 2px!important;}
+ body #wordsPage .word-grid {grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;}
+ body #wordsPage .word-grid > button {min-width:0!important;padding:10px 6px!important;font-size:26px!important;}
+ body #wordsPage .actions > button {max-width:100%!important;min-width:0!important;white-space:normal!important;}
+}
+@media (max-width:600px) {
+ body #practicePage #familyLearningPath.learning-path[hidden],
+ body .site-header.app .header-navigation[hidden],
+ body #practicePage .new-family-bar[hidden] {display:none!important;}
+}
