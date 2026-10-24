@@ -20,10 +20,16 @@
   <dialog id="parentPinDialog" aria-labelledby="parentPinTitle">
     <form id="parentPinForm">
       <h2 id="parentPinTitle">Parent Settings</h2>
-      <label for="parentPinInput">Enter the security PIN</label>
-      <input id="parentPinInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="7" autocomplete="off" aria-describedby="parentPinError" autofocus>
+      <label for="parentPinInput">Enter your parent password or recovery code</label>
+      <input id="parentPinInput" type="password" maxlength="64" autocomplete="off" aria-describedby="parentPinError" autofocus>
       <p id="parentPinError" role="alert"></p>
-      <div class="parent-pin-actions"><button type="submit">Unlock</button></div>
+      <div id="parentPasswordFields" hidden>
+        <label for="parentNewPassword">New parent password (at least 6 characters)</label>
+        <input id="parentNewPassword" type="password" minlength="6" maxlength="64" autocomplete="new-password">
+        <label for="parentConfirmPassword">Confirm new password</label>
+        <input id="parentConfirmPassword" type="password" minlength="6" maxlength="64" autocomplete="new-password">
+      </div>
+      <div class="parent-pin-actions"><button id="parentPinSubmit" type="submit">Unlock</button></div>
     </form>
   </dialog>
   <dialog id="parentSettings" aria-label="Parent Settings"><div class="parent-dialog-heading"><h2>Parent Settings</h2></div><div id="parentSettingsContent"></div></dialog>

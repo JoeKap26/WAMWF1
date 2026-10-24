@@ -363,6 +363,51 @@ b.style.setProperty('--letter-y', `${y}%`);
     const hitFaces = ['hit1.png', 'hit2.png', 'hit3.png', 'hit4.png', 'hit5.png'];
     const backgrounds = ['background1.png', 'background2.png', 'background3.png', 'background4.png', 'background5.png', 'background6.png', 'background7.png', 'background8.png', 'background9.png', 'background10.png', 'background11.png'];
     let backgroundSequence = backgrounds.slice();
+
+    // Decode shared artwork once; retain only the current and next backgrounds.
+    const preparedImages = new Map();
+    let renderVersion = 0;
+    function prepareImage(url) {
+        if (preparedImages.has(url)) return preparedImages.get(url).ready;
+        const image = new Image();
+        const entry = {image, ready: null};
+        entry.ready = new Promise(resolve => {
+            const timeout = window.setTimeout(() => {
+                image.onload = image.onerror = null;
+                preparedImages.delete(url);
+                resolve(false);
+            }, 10000);
+            const finish = ok => {
+                window.clearTimeout(timeout);
+                image.onload = image.onerror = null;
+                if (!ok) preparedImages.delete(url);
+                resolve(ok);
+            };
+            image.onload = async () => {
+                try { if (image.decode) await image.decode(); } catch (_) {}
+                finish(true);
+            };
+            image.onerror = () => finish(false);
+            image.src = url;
+        });
+        preparedImages.set(url, entry);
+        return entry.ready;
+    }
+    const sharedArtwork = ["images/buttons/L.png", "images/buttons/LS.png", "images/buttons/W.png", "images/buttons/WS.png", "images/buttons/exit.png", "images/buttons/i.png", "images/buttons/speakerGame.png", "images/hammers/1.png", "images/hammers/2.png", "images/hammers/3.png", "images/hammers/4.png", "images/hammers/5.png", "images/holes/newholeback.png", "images/holes/newholefront.png", "images/moles/haha.png", "images/moles/hit1.png", "images/moles/hit2.png", "images/moles/hit3.png", "images/moles/hit4.png", "images/moles/hit5.png", "images/moles/nexttohit.png", "images/moles/normalface.png", "images/moles/suprisedface.png", "images/moles/toung.png", "images/popouts/lightning200.png", "images/popouts/lightning50.png", "images/popouts/super.png", "images/signs/letterSign.png", "images/signs/sign.png", "images/signs/topLeft.png", "images/signs/topMiddle.png", "images/signs/topRight.png"];
+    let sharedArtworkReady;
+    function prepareSharedArtwork() {
+        if (!sharedArtworkReady) {
+            sharedArtworkReady = (async () => {
+                // Small batches prevent decoding every sprite at the same instant.
+                for (let i = 0; i < sharedArtwork.length; i += 4) {
+                    await Promise.all(sharedArtwork.slice(i, i + 4).map(prepareImage));
+                }
+            })();
+        }
+        return sharedArtworkReady;
+    }
+    const backgroundURL = name => `${folders}backgrounds/${name}`;
+
     const getBackgroundNumber = name => Number((name.match(/background(\d+)\.png$/) || [, '1'])[1]);
     const SLOT_SIZE = {
         w: 7.92, h: 11.088
@@ -504,7 +549,6 @@ b.style.setProperty('--letter-y', `${y}%`);
     }
     // Special reactions temporarily override slow, independent idle expressions.
     const reactionTimers = new Map();
-    let idleInterval = null;
     function availableSlots(exclude = []) {
         return[...grid.children].filter(s => s.isConnected && !s.classList.contains('down') && !s.classList.contains('rising') && !exclude.includes(s));
     }
@@ -562,7 +606,6 @@ b.style.setProperty('--letter-y', `${y}%`);
         return nearest;
     }
     function startIdleFaces() {
-        clearInterval(idleInterval);
         // Each tick updates at most one idle mole, roughly every 3–6 seconds.
         function tick() {
             if (isPaused() || stopped || answered)return;
@@ -595,7 +638,6 @@ b.style.setProperty('--letter-y', `${y}%`);
         faceTimers = [];
         for (const t of reactionTimers.values())clearTimeout(t);
         reactionTimers.clear();
-        clearInterval(idleInterval);
     }
     // Random hole centers only inside cyan-approved areas of each background.
     // Favor a naturally balanced spread with mild variation; never use an unapproved point.
@@ -689,7 +731,8 @@ b.style.setProperty('--letter-y', `${y}%`);
         });
         return b;
     }
-    function render() {
+    async function render() {
+        const version = ++renderVersion;
         hideSuper();
         removeHintGlow();
         clearTimers();
@@ -698,6 +741,14 @@ b.style.setProperty('--letter-y', `${y}%`);
         hammer.classList.remove('cooldown');
         updateHammerCountdown();
         const backgroundName = backgroundSequence[round % backgroundSequence.length] || backgrounds[round % backgrounds.length];
+        stopped = true;
+        pauseGame('loading');
+        scene.setAttribute('aria-busy', 'true');
+        status.textContent = 'Getting the game ready…';
+        grid.replaceChildren();
+        await Promise.all([prepareSharedArtwork(), prepareImage(backgroundURL(backgroundName))]);
+        if (version !== renderVersion) return;
+        scene.removeAttribute('aria-busy');
         gamePositions = randomPositions(7, getBackgroundNumber(backgroundName));
         answered = false;
         stopped = false;
@@ -716,6 +767,7 @@ b.style.setProperty('--letter-y', `${y}%`);
         }
         grid.replaceChildren(...q.choices.map((word, i) => slotFor(word, i, gamePositions)));
         updateStars();
+        resumeGame('loading');
         generateLetters();
         startPopTimers();
         startIdleFaces();
@@ -724,6 +776,12 @@ b.style.setProperty('--letter-y', `${y}%`);
         // This also runs on the first round and on restart. Browser autoplay
         // restrictions may require an initial user gesture before audio works.
         speakWord();
+        const next = backgroundSequence[(round + 1) % backgroundSequence.length] || backgrounds[(round + 1) % backgrounds.length];
+        const keep = new Set([backgroundURL(backgroundName), backgroundURL(next)]);
+        for (const url of preparedImages.keys()) {
+            if (url.startsWith(`${folders}backgrounds/`) && !keep.has(url)) preparedImages.delete(url);
+        }
+        void prepareImage(backgroundURL(next));
     }
     function updateStars() {
     }
@@ -964,7 +1022,6 @@ b.style.setProperty('--letter-y', `${y}%`);
 
         accountedBonus = bonusPoints;
         clockStarted = 0;
-        clockStart();
         updateRewards();
         render();
     }
@@ -986,11 +1043,13 @@ b.style.setProperty('--letter-y', `${y}%`);
     // via choose(); a correct mole never replays it.
     $('listen').addEventListener('click', speakWord);
     function returnToWordFamilies() {
+        ++renderVersion;
         if (window.parent !== window) window.parent.postMessage({type:'wordfamilies-whack-exit'}, '*');
         else location.href = '../index.html';
     }
     window.addEventListener('message', event => {
         if (event.source !== window.parent || event.data?.type !== 'wordfamilies-whack-save') return;
+        ++renderVersion;
         pauseGame('closing');
         window.parent.postMessage({type:'wordfamilies-whack-saved'}, '*');
     });
@@ -1030,5 +1089,7 @@ b.style.setProperty('--letter-y', `${y}%`);
         else resumeGame('hidden');
     });
     window.addEventListener('pagehide', () => { clockPause(); saveWhackProgress(); });
+    window.addEventListener('wordfamilies-native-pause', () => { pauseGame('native'); infoAudio.pause(); });
+    window.addEventListener('wordfamilies-native-resume', () => resumeGame('native'));
     restart();
 })();

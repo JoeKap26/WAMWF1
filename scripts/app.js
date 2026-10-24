@@ -2542,18 +2542,81 @@ let quizAdvanceTimer = null;
       const pinDialog = layout('parentPinDialog');
       const pinInput = layout('parentPinInput');
       const pinError = layout('parentPinError');
-      function openParentSettings() {
-        if (parentDialog.open || pinDialog.open) return;
+      const passwordFields = layout('parentPasswordFields');
+      const passwordNew = layout('parentNewPassword');
+      const passwordConfirm = layout('parentConfirmPassword');
+      const passwordSubmit = layout('parentPinSubmit');
+      const passwordTitle = layout('parentPinTitle');
+      const parentPasswordKey = 'wf-parent-password-v1';
+      const parentRecoveryCode = '513715';
+      let settingParentPassword = false;
+
+      // This login intentionally remains local to the web view (not iOS Keychain).
+      // The wf- prefix also enables the existing native progress backup to mirror it.
+      function getParentPassword() {
+        try { return localStorage.getItem(parentPasswordKey); }
+        catch { return null; }
+      }
+      function resetPasswordForm() {
+        settingParentPassword = false;
+        pinDialog.classList.remove('setting-parent-password');
+        passwordFields.hidden = true;
+        passwordNew.value = '';
+        passwordConfirm.value = '';
         pinInput.value = '';
+        pinInput.disabled = false;
+        pinInput.parentElement.querySelector('label').textContent = 'Enter your parent password or recovery code';
+        passwordTitle.textContent = 'Parent Settings';
+        passwordSubmit.textContent = 'Unlock';
         pinError.textContent = '';
         pinInput.removeAttribute('aria-invalid');
+      }
+      function enterPasswordSetup() {
+        settingParentPassword = true;
+        pinDialog.classList.add('setting-parent-password');
+        passwordFields.hidden = false;
+        pinInput.value = '';
+        pinInput.disabled = true;
+        passwordTitle.textContent = 'Set Parent Password';
+        passwordSubmit.textContent = 'Save Password';
+        pinError.textContent = '';
+        passwordNew.focus();
+      }
+      function openParentSettings() {
+        if (parentDialog.open || pinDialog.open) return;
+        resetPasswordForm();
         pinDialog.showModal();
-        pinInput.focus();
+        if (!getParentPassword()) enterPasswordSetup();
+        else pinInput.focus();
       }
       layout('parentPinForm').addEventListener('submit', event => {
         event.preventDefault();
-        if (pinInput.value !== '8675309') {
-          pinError.textContent = 'Incorrect PIN. Please try again.';
+        if (settingParentPassword) {
+          const next = passwordNew.value;
+          if (next.length < 6 || next === parentRecoveryCode || next !== passwordConfirm.value) {
+            pinError.textContent = next.length < 6 ? 'Use at least 6 characters.' :
+              next === parentRecoveryCode ? 'Choose a password different from the recovery code.' :
+              'Passwords do not match.';
+            passwordNew.focus();
+            return;
+          }
+          try {
+            localStorage.setItem(parentPasswordKey, next);
+            if (localStorage.getItem(parentPasswordKey) !== next) throw new Error('Password not saved');
+          } catch (error) {
+            pinError.textContent = 'Unable to save password on this device. Please check storage settings.';
+            return;
+          }
+          pinDialog.close();
+          showUnlockedParentSettings();
+          return;
+        }
+        if (pinInput.value === parentRecoveryCode) {
+          enterPasswordSetup();
+          return;
+        }
+        if (!getParentPassword() || pinInput.value !== getParentPassword()) {
+          pinError.textContent = 'Incorrect password. Please try again.';
           pinInput.setAttribute('aria-invalid', 'true');
           pinInput.value = '';
           pinInput.focus();
@@ -2571,11 +2634,7 @@ let quizAdvanceTimer = null;
           pinDialog.close();
         }
       });
-      pinDialog.addEventListener('close', () => {
-        pinInput.value = '';
-        pinError.textContent = '';
-        pinInput.removeAttribute('aria-invalid');
-      });
+      pinDialog.addEventListener('close', resetPasswordForm);
       layout('parentSettingsButton').addEventListener('click', openParentSettings);
       layout('kidSettings').addEventListener('click', openParentSettings);
       parentDialog.addEventListener('close', () => { restoreParentSettingsNavigation(); });
@@ -2694,6 +2753,5 @@ function setLayoutText(id,value){if(layout(id).textContent!==value)layout(id).te
       syncLayout();
 
       showUserPicker();
-      document.getElementById('welcomeNotice').showModal();
 
     })();
