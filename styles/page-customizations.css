@@ -57,3 +57,24 @@
 #parentPasswordFields label{font-size:16px!important}
 
 #parentPinDialog.setting-parent-password label[for="parentPinInput"],#parentPinDialog.setting-parent-password #parentPinInput,#parentPinDialog #parentPinError:empty{display:none!important}
+
+/* Keep instructions inside the mobile navigation instead of off its left edge. */
+@media (max-width:700px){
+ .site-header.app .header-navigation{
+  display:grid!important;grid-template-columns:48px repeat(3,minmax(0,1fr))!important;
+  align-items:center!important;gap:6px!important;min-width:0!important;
+ }
+ .site-header.app .header-navigation #pageInstructionSpeaker{
+  position:static!important;inset:auto!important;transform:none!important;
+  grid-column:1!important;grid-row:1!important;order:0!important;
+  width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;
+  margin:0!important;padding:0!important;justify-self:center!important;
+ }
+ .site-header.app .header-navigation #pageInstructionSpeaker img{
+  display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
+ }
+ .site-header.app .header-navigation > #parentSettingsButton{grid-column:2!important;grid-row:1!important;}
+ .site-header.app .header-navigation > #practiceUsers{grid-column:3!important;grid-row:1!important;}
+ .site-header.app .header-navigation > #layoutFamilies{grid-column:4!important;grid-row:1!important;}
+ .site-header.app .header-navigation > button{min-width:0!important;}
+}
